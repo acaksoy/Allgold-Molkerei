@@ -1,1 +1,54 @@
 @charset "ISO-8859-1";
+
+.div-center{
+	display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  height: 50%;
+  padding: 20px;  
+  color: black;
+  text-align: center;
+}
+
+.green-button{
+	background-color: #D9FDD5;
+	color: black;
+	margin-left:10px;
+	border: 2px solid white;
+	padding: 20px 20px;
+	text-align: center;
+	display: inline-block;
+	border-radius: 12px;
+}
+
+.red-button{
+	background-color: #FC8C8C;
+	color: black;
+	margin-left:10px;
+	border: 2px solid white;
+	padding: 20px 20px;
+	text-align: center;
+	display: inline-block;
+	border-radius: 12px;
+}
+
+.red-button:hover{
+	border: 2px solid black;
+}
+
+.green-button:hover{
+	border: 2px solid black;
+}
+
+
+.top_banner{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 25px;
+}
+
+
