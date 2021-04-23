@@ -1,0 +1,50 @@
+@charset "ISO-8859-1";
+
+.div-center{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  height: 50%;
+  padding: 20px;  
+  color: white;
+  text-align: center;
+}
+.top_banner{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 25px;
+}
+.big_barn{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+}
+
+/* horizontal anordnen */
+.button_div{
+	margin-left: 750px;
+	margin-top:30px;
+}
+.main_menu_button{
+	background-color: white;
+	color: black;
+	margin-left:10px;
+	border: 2px solid white;
+	padding: 20px 20px;
+	text-align: center;
+	display: inline-block;
+}
+/* ändert die Borderfarbe, wenn der Zeiger auf dem Button ist */
+.main_menu_button:hover{
+	border: 2px solid black;
+}
+.img_with_text{
+	text-align:center;
+	width: 80px;
+}
+
+
