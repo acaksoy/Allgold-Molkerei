@@ -24,11 +24,6 @@
 	margin-top: 30px;
 }
 
-/* horizontal anordnen */
-.button_div{
-	margin-left: 750px;
-	margin-top:30px;
-}
 .main_menu_button{
 	background-color: white;
 	color: black;
@@ -42,9 +37,6 @@
 .main_menu_button:hover{
 	border: 2px solid black;
 }
-.img_with_text{
-	text-align:center;
-	width: 80px;
-}
+
 
 
