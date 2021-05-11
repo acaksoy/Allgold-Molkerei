@@ -3,37 +3,32 @@
 .div-center{
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 25%;
   transform: translate(-50%, -50%);
   width: 40%;
   height: 50%; 
   color: black;
   text-align: center;
   display: inline-block;
+  margin-top:30px;
 }
 .top_banner{
-	display: inline-block;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 25px;
+	margin-top: 50px;
 }
-.big_barn{
-	display: inline-block;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 30px;
+.big-barn{
+	margin-top: 50px;
 }
 
-.main_menu_button{
+.main-menu-button{
 	background-color: white;
 	color: black;
 	margin-left:10px;
 	border: 2px solid white;
 	padding: 20px 20px;
-	display: inline-block;
+	margin-top: 75px;
 }
 /* ändert die Borderfarbe, wenn der Zeiger auf dem Button ist */
-.main_menu_button:hover{
+.main-menu-button:hover{
 	border: 2px solid black;
 }
 

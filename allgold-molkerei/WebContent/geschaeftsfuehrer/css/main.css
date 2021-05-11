@@ -1,0 +1,75 @@
+@charset "ISO-8859-1";
+
+.div-center{
+	display: inline-block;
+ 	position: fixed;
+  	left: 50%;
+ 	top: 50%;
+  	transform: translate(-50%, -50%);
+  	padding: 20px;  
+  	color: black;
+  	text-align: center;
+}
+
+.formClass{
+	margin:20px;
+}
+.outter-box{
+	border: 2px solid black;
+	border-radius: 12px;
+}
+.card{
+	display: inline-block;
+	margin-left:10px;
+	margin-bottom: 10px;
+	padding: 5px;
+	text-align: left;
+	width: 200px;
+	border: 2px solid black;
+	border-radius: 12px;
+}
+.card-button{
+	background-color: white;
+	color: black;
+	margin-left:10px;
+	margin-top: 10px;
+	border: 2px solid black;
+	padding: 10px;
+	text-align: center;
+	border-radius: 12px;
+}
+.simple-button{
+	background-color: white;
+	color: black;
+	margin-left:10px;
+	margin-top: 20px;
+	border: 2px solid black;
+	padding: 10px;
+	text-align: center;
+	border-radius: 12px;
+	width: 130px;
+	height:50px;
+	font-size: 0.75em;
+}
+
+.simple-button:hover{
+	background-color: black;
+	color: white;
+}
+.card-button:hover{
+	background-color: black;
+	color: white;
+}
+.burger-menu{
+	 position: relative;
+}
+.burger-menu #burger-menu{
+	display: none;
+}
+.burger-menu a{
+	border: #a9a9a9;
+	padding: 10px;
+	background-color: #a9a9a9;
+	display:inline-block;
+}
+
