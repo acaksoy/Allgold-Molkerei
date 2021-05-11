@@ -1,10 +1,11 @@
 @charset "ISO-8859-1";
 
 .div-center{
+	font-size: 18pt;
 	display: inline-block;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 30%;
   transform: translate(-50%, -50%);
   width: 40%;
   height: 50%;
@@ -20,7 +21,6 @@
 	border: 2px solid white;
 	padding: 20px 20px;
 	text-align: center;
-	display: inline-block;
 	border-radius: 12px;
 }
 
@@ -31,7 +31,6 @@
 	border: 2px solid white;
 	padding: 20px 20px;
 	text-align: center;
-	display: inline-block;
 	border-radius: 12px;
 }
 
