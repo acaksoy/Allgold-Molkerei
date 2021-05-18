@@ -2,43 +2,37 @@
 <html>
   <head>
     <meta charset="ISO-8859-1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Allgold Supply Center</title>
-	<link href="../css/main.css" rel="stylesheet" />
+    <title>Allgold Supply Center</title>
+    <link href="../css/main.css" rel="stylesheet" />
   </head>
-  <body>
-<div>
-<form>
-   
-   <div class="div-center">
-   
-   	 <label for="vkID">Verkaufsstellen ID:</label><br>
-     <input type="text" id="vkID" name="vkID"><br>
+<body>
+    <div class="div-center">
+        <a href="../../index/pages/index.html">
+			<img src="../resources/index_top_banner.jpg" class="top-banner" width= "316" height="124" >
+		</a>
+        <h1> Verkauferfassen </h1>
+        <form action="../../index/pages/index.html"> 
 
-     <label for="prID">Produkt ID:</label><br>
-     <input type="text" id="prID" name="prID"><br><br>
+             <label for="vkID">Verkaufsstellen ID:</label><br>
+             <input type="text" id="vkID" name="vkID"><br><br>
 
-     <label for="mg">Menge:</label><br>
-     <input type="text" id="mg" name="mg"><br><br>
+             <label for="prID">Produkt ID:</label><br>
+             <input type="text" id="prID" name="prID"><br><br>
 
-     <label for="vkDat">Verkaufsdatum:</label><br>
-     <input type="date" id="vkDat" name="vkDat"><br><br>
-     
- 	<a> 
- 		<button name="Verkäufer" type="submit" class="green-button">
-			<sub>Erfassen</sub>
-		</button></a>
- 	<a href="verkaeufer.html"> 
- 		<button name="Abbrechen" class="red-button">
-			<b>Abbrechen</b> 
-		</button>
-	</a>
- 
-   </div>
-  
- </form>
-</div>
-  
-  </body>
+             <label for="mg">Menge:</label><br>
+             <input type="text" id="mg" name="mg"><br><br>
+
+             <label for="vkDat">Verkaufsdatum:</label><br>
+             <input type="date" id="vkDat" name="vkDat"><br><br>
+
+			<button class="green-button" style="margin-top: 30px;" type="submit">Erfassen</button>
+		 	
+		 	<button class="red-button" style="margin-top: 30px;"> 
+				<a href="verkaeufer.html" style="text-decoration: none; color:black"> Abbrechen </a>
+			</button>
+        </form>
+      </div>
+</body>
 </html>

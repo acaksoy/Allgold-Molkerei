@@ -1,18 +1,17 @@
 @charset "ISO-8859-1";
 
-.div-center{
-	display: inline-block;
- 	position: fixed;
-  	left: 50%;
- 	top: 50%;
-  	transform: translate(-50%, -50%);
-  	padding: 20px;  
-  	color: black;
-  	text-align: center;
-}
 
-.formClass{
-	margin:20px;
+.div-center{
+  font-size: 12pt; /* 18 */
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%);
+  width: 1200px;
+  padding: 20px;  
+  color: black;
+  text-align: center;
 }
 .outter-box{
 	border: 2px solid black;
@@ -24,35 +23,59 @@
 	margin-bottom: 10px;
 	padding: 5px;
 	text-align: left;
-	width: 200px;
+	width: auto;
 	border: 2px solid black;
 	border-radius: 12px;
+}
+button{
+	margin-left:10px;
+	margin-top: 20px;
+	padding: 10px;
+	text-align: center;
+	border-radius: 12px;
+	border: 2px solid;
 }
 .card-button{
 	background-color: white;
 	color: black;
-	margin-left:10px;
-	margin-top: 10px;
-	border: 2px solid black;
-	padding: 10px;
-	text-align: center;
-	border-radius: 12px;
+	border-color: black;
 }
-.simple-button{
-	background-color: white;
+.green-button{
+	background-color: #D9FDD5;
 	color: black;
-	margin-left:10px;
-	margin-top: 20px;
-	border: 2px solid black;
-	padding: 10px;
-	text-align: center;
-	border-radius: 12px;
-	width: 130px;
-	height:50px;
-	font-size: 0.75em;
+	border-color: white;
+	left: 50px;
 }
 
-.simple-button:hover{
+.red-button{
+	background-color: #FC8C8C;
+	color: black;
+	border-color: white;
+}
+
+.basic-button{
+	/*display: inline-block;*/
+	background-color: white;
+	color: black;	
+	border-color: black;
+}
+
+.orange-button{
+	background-color: #DAA520;
+	color: black;
+	border-color: white;
+}
+
+.red-button:hover{
+	border: 2px solid black;
+}
+
+.green-button:hover{
+	border: 2px solid black;
+}
+
+.basic-button:hover{
+	border: 2px solid black;
 	background-color: black;
 	color: white;
 }
@@ -60,16 +83,58 @@
 	background-color: black;
 	color: white;
 }
+.orange-button:hover{
+	background-color: #F0E68C;
+	border-color: black;
+}
+.top_banner{
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+}
+
+.div-inline {  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.div-inline label {
+  margin: 5px 10px 5px 0;
+}
+
+.div-inline input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.div-inline button {
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  cursor: pointer;
+}
+
+.div-inline button:hover {
+  background-color: royalblue;
+}
+
 .burger-menu{
-	 position: relative;
+     position: relative;
 }
 .burger-menu #burger-menu{
-	display: none;
+    display: none;
 }
 .burger-menu a{
-	border: #a9a9a9;
-	padding: 10px;
-	background-color: #a9a9a9;
-	display:inline-block;
+    border: #a9a9a9;
+    padding: 10px;
+    background-color: #a9a9a9;
 }
+
+
 

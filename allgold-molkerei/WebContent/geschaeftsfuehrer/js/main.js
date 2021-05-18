@@ -10,14 +10,14 @@ function createVerkaufsstelle(){
 	card.setAttribute("class", "card");
 	
 	var name = document.createElement("b");
-	name.textContent = "Verkaufsstellename:";
+	name.textContent = "Name:";
 	card.appendChild(name);
 	
 	var br = document.createElement("br");
 	card.appendChild(br);
 	
 	var id = document.createElement("b");
-	id.textContent = "Verkaufsstellename:";
+	id.textContent = "ID:";
 	card.appendChild(id);
 	
 	var br2 = document.createElement("br");
@@ -30,7 +30,7 @@ function createVerkaufsstelle(){
 	
 	var button2 = document.createElement("button");
 	button2.setAttribute("class", "card-button");
-	button2.textContent = "Uebersicht";
+	button2.textContent = "Verkaufszahlen";
 	card.appendChild(button2);
 	
 	
