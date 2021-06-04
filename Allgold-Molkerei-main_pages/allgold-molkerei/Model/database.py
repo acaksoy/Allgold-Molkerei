@@ -1,9 +1,12 @@
 from flask_mongoengine import MongoEngine, BaseQuerySet
+from flask_mongoengine.wtf import model_form
+
 
 db = MongoEngine()
 
-class Adresse(db.Model):
-    adressID = db.Column(db.Integer, primary_key=True)
+
+class Adresse(db.Document):
+    adressID = db.IntField(required = True, primary_key = True)
     hausNR = db.Column(db.Integer)
     plz = db.Column(db.Integer)
     ort = db.Column(db.String(20))
