@@ -1,18 +1,17 @@
-from flask_mongoengine import MongoEngine, BaseQuerySet
-from flask_mongoengine.wtf import model_form
+from flask_sqlalchemy import SQLAlchemy
 
+db=SQLAlchemy()
 
-db = MongoEngine()
-
-
-class Adresse(db.Document):
-    adressID = db.IntField(required = True, primary_key = True)
+class Adresse(db.Model):
+    adressID = db.Column(db.Integer, primary_key=True)
     hausNR = db.Column(db.Integer)
     plz = db.Column(db.Integer)
     ort = db.Column(db.String(20))
     strasse = db.Column(db.String(50))
     beschreibung = db.Column(db.String(200))
     verkaufstelleID = db.Column(db.Integer, db.ForeignKey('verkaufstelle.verkaufstelleID'),nullable=False)
+
+
 
 class Verkaufstelle(db.Model):
     verkaufstelleID = db.Column(db.Integer, primary_key=True)
@@ -49,3 +48,4 @@ class Verkauf(db.Model):
     verkaufProduktName = db.Column(db.String(50))
     produktID = db.Column(db.Integer, db.ForeignKey('produkt.produktID'), nullable=False)
     verkaufstelleID = db.Column(db.Integer, db.ForeignKey('verkaufstelle.verkaufstelleID'), nullable=False)
+

@@ -1,4 +1,4 @@
-@charset "ISO-8859-1";
+@charset "UTF-8";
 
 .div-center{
   position: absolute;
@@ -27,7 +27,7 @@
 	padding: 20px 20px;
 	margin-top: 75px;
 }
-/* ändert die Borderfarbe, wenn der Zeiger auf dem Button ist */
+/* ï¿½ndert die Borderfarbe, wenn der Zeiger auf dem Button ist */
 .main-menu-button:hover{
 	border: 2px solid black;
 }

@@ -1,18 +1,17 @@
-from flask import Flask
-from flask_mongoengine import MongoEngine
+from flask import Flask, render_template, url_for, Blueprint
 
-app = Flask(__name__)
-app.config['MONGODB_SETTINGS'] = {
-    'db': 'database',
-    'host': 'localhost',
-    'port': 27017
-}
-db = MongoEngine()
-db.init_app(app)
 
-@app.route('/')
-def hello_world():
-    return 'Hello World'
+app = Flask(__name__, static_url_path='/static/admin')
+
+def loadBlueprints(app):
+    from index.view import Index
+    from lieferant.view import Lieferant
+
+    app.register_blueprint(Index)
+    app.register_blueprint(Lieferant)
+
+loadBlueprints(app)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug = True)
+
