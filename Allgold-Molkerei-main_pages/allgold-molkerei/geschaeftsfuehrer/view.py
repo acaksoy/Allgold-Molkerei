@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 
-Geschaeftsfuehrer = Blueprint('geschaeftsfuehrer', __name__, template_folder='pages', static_folder='static', static_url_path='/static')
+Geschaeftsfuehrer = Blueprint('geschaeftsfuehrer', __name__, template_folder='pages', static_folder='static')
 
 # all routes
 @Geschaeftsfuehrer.route('/', methods=['GET','POST'])

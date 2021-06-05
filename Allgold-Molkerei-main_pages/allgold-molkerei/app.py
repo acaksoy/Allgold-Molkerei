@@ -1,10 +1,14 @@
 from flask import Flask, render_template, url_for, Blueprint
-from database import db
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__, static_url_path='/static/admin')
-db.init_app(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-def loadBlueprints(app):
+#create database
+db = SQLAlchemy(app)
+
+def LoadBlueprints(app):
     from index.view import Index
     from lieferant.view import Lieferant
     from geschaeftsfuehrer.view import Geschaeftsfuehrer
@@ -15,8 +19,9 @@ def loadBlueprints(app):
     app.register_blueprint(Geschaeftsfuehrer, url_prefix="/geschaeftsfuehrer")
 
 
-loadBlueprints(app)
+LoadBlueprints(app)
 
 if __name__ == '__main__':
+    db.create_all()
     app.run(debug = True)
 
