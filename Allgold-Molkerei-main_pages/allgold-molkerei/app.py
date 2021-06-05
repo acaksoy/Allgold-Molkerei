@@ -6,9 +6,13 @@ app = Flask(__name__, static_url_path='/static/admin')
 def loadBlueprints(app):
     from index.view import Index
     from lieferant.view import Lieferant
+    from geschaeftsfuehrer.view import Geschaeftsfuehrer
+
 
     app.register_blueprint(Index)
     app.register_blueprint(Lieferant)
+    app.register_blueprint(Geschaeftsfuehrer, url_prefix="/geschaeftsfuehrer")
+
 
 loadBlueprints(app)
 

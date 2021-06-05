@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
+	<meta charset="UTF-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Allgold Supply Center</title>
-	<link href="../css/main.css" rel="stylesheet" />
-	<script src="../js/main.js"></script>
+	<link href= "{{url_for('.static', filename='css/main.css')}}"  type="text/css" rel="stylesheet"/> <!--../static/css/main.css-->
+	<script src= "{{url_for('.static', filename='js/main.js')}}"  type="text/javascript"> </script>
 </head>
 <body>
 		
 	<div class="div-center">
 		
 		<a href="../../index/pages/index.html">
-			<img src="../resources/index_top_banner.jpg" class="top-banner" width= "316" height="124" >
+			<img src="{{url_for('.static', filename='resources/index_top_banner.jpg')}}" class="top-banner" width= "316" height="124" >
 		</a> <br> <br>
 		
 		<div class="burger-menu">
@@ -40,7 +40,7 @@
 		<!-- <button onclick="createVerkaufsstelle()" class="basic-button">
 			<b>neue Verkaufsstelle</b>
 		</button> -->
-		<a href="Erstellen.html">
+		<a href="{{url_for('geschaeftsfuehrer.neuVerkaufStelle')}}">
 			<button class="basic-button">
 				<b>neue Verkaufsstelle</b>  <!-- text tarzi olusturulmali -->
 			</button>

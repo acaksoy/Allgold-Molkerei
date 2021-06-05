@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="ISO-8859-1">
+    <meta charset="UTF-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Allgold Supply Center</title>
-	<link href="../css/main.css" rel="stylesheet" />
+	<link href="{{url_for('.static', filename='css/main.css')}}" rel="stylesheet" />
   </head>
 	<body>
 		<div class="div-center">
@@ -31,8 +31,8 @@
 						<input type="text" id="ort" placeholder="Ort eingeben" name="pswd">
 						<label for="plz">PLZ:</label>
 						<input type="text" id="plz" placeholder="plz eingeben" name="plz">
-						<label for="str">Straße:</label>
-						<input type="text" id="str" placeholder="Straße eingeben" name="str">
+						<label for="str">StraÃŸe:</label>
+						<input type="text" id="str" placeholder="StraÃŸe eingeben" name="str">
 						<label for="hnr">Hausnr:</label>
 						<input type="text" id="hnr" placeholder="Hausnummer eingeben" name="hnr">
 					</div>
@@ -42,7 +42,7 @@
 					</div>
 				</div>
 				<button style="margin-right: 250px" class="green-button" style="margin-top: 30px;" type="submit">Speichern</button>
-				<button style="margin-left: 250px" class="red-button" style="margin-top: 30px;" >Löschen</button>
+				<button style="margin-left: 250px" class="red-button" style="margin-top: 30px;" >LÃ¶schen</button>
 			</form>
 		</div>
 	</body>

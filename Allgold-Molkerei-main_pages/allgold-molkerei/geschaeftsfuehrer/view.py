@@ -1,11 +1,14 @@
 from flask import Blueprint, render_template
 
-Geschaeftsfuehrer = Blueprint('geschaeftsfuehrer', __name__, template_folder='pages', static_folder='static')
-
+Geschaeftsfuehrer = Blueprint('geschaeftsfuehrer', __name__, template_folder='pages', static_folder='static', static_url_path='/static')
 
 # all routes
 @Geschaeftsfuehrer.route('/', methods=['GET','POST'])
 def home():
 
+    return render_template('geschaeftsfuehrer.html')
 
-    return "falan" #render_template('list_mz.html', stempel=stempel, mitarbeiterEvents=mitarbeiterEvents, latest=latest, info=session, user=current_user)
+@Geschaeftsfuehrer.route('/neuVerStl', methods=['GET','POST']) # sadece POSTla olmuyor. ya GET ve POST bir arada kullanilacak ya da ikisi de kullanilmayacak.
+def neuVerkaufStelle():
+
+    return render_template('Erstellen.html')

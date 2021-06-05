@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="ISO-8859-1">
+   <head>
+	<meta charset="UTF-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Allgold Supply Center</title>
-	<link href="../css/main.css" rel="stylesheet" />
-  </head>
+	<link href= "{{url_for('.static', filename='css/main.css')}}" rel="stylesheet"  type="text/css" /> <!--../static/css/main.css-->
+
+    </head>
 	<body>
 		<div class="div-center">
 			<a href="../../index/pages/index.html">
-				<img src="../resources/index_top_banner.jpg" class="top-banner" width= "316" height="124" >
+				<img src="{{url_for('.static', filename='resources/index_top_banner.jpg')}}" class="top-banner" width= "316" height="124" >
 			</a>
-			<h1 style="margin-top: 30px;">Verkaufsstelle Eröffnen</h1>
+			<h1 style="margin-top: 30px;">Verkaufsstelle ErÃ¶ffnen</h1>
 			<form>
 				<div  class="div-inline">
 					<div style="width: 200px">
@@ -28,8 +29,8 @@
 						<input type="text" id="ort" placeholder="Ort eingeben" name="pswd">
 						<label for="plz">PLZ:</label>
 						<input type="text" id="plz" placeholder="plz eingeben" name="plz">
-						<label for="str">Straße:</label>
-						<input type="text" id="str" placeholder="Straße eingeben" name="str">
+						<label for="str">StraÃŸe:</label>
+						<input type="text" id="str" placeholder="StraÃŸe eingeben" name="str">
 						<label for="hnr">Hausnr:</label>
 						<input type="text" id="hnr" placeholder="Hausnummer eingeben" name="hnr">
 					</div>
