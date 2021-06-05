@@ -10,12 +10,12 @@
 	<body>
 		<div class="div-center">
 			<!-- <img src="../resources/index_top_banner.jpg" width= "474" height="192" > -->
-			<a href="../../index/pages/index.html">
+			<a href="{{url_for('index.home')}}">
 				<img src="../resources/index_top_banner.jpg" class="top-banner" width= "316" height="124" >
 			</a> <br> <br>
 			
 			<h1 style="margin-top: 30px;">Verkaufsstellen Übersicht</h1>
-			<a href="geschaeftsfuehrer.html">
+			<a href="{{url_for('geschaeftsfuehrer.home')}}">
 				<button class="basic-button" style="margin-top: 10px; margin-bottom: 10px;">Zurück zur Liste</button>
 			</a>
 			<form>
@@ -44,7 +44,7 @@
 					</div>
 				</div>								
 			</form>
-			<a href="bearbeiten.html">
+			<a href="{{url_for('geschaeftsfuehrer.bearbeiten')}}">
 				<button class="green-button" style="margin-top: 30px;" type="submit">Bearbeiten</button>
 			</a>
 		</div>

@@ -10,7 +10,7 @@
     </head>
 	<body>
 		<div class="div-center">
-			<a href="../../index/pages/index.html">
+			<a href="{{url_for('index.home')}}">
 				<img src="{{url_for('.static', filename='resources/index_top_banner.jpg')}}" class="top-banner" width= "316" height="124" >
 			</a>
 			<h1 style="margin-top: 30px;">Verkaufsstelle Eröffnen</h1>
@@ -41,7 +41,7 @@
 				</div>
 				<button style="margin-right: 250px" class="green-button" style="margin-top: 30px;" type="submit">Erstellen</button>
 				<button style="margin-left: 250px" class="red-button" style="margin-top: 30px;"> 
-					<a href="geschaeftsfuehrer.html" style="text-decoration: none; color:black"> Abbrechen </a>
+					<a href="{{url_for('geschaeftsfuehrer.home')}}" style="text-decoration: none; color:black"> Abbrechen </a>
 				</button>
 			</form>
 		</div>

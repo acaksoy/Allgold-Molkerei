@@ -12,3 +12,13 @@ def home():
 def neuVerkaufStelle():
 
     return render_template('Erstellen.html')
+
+@Geschaeftsfuehrer.route('/uebersicht', methods=['GET','POST'])
+def uebersicht():
+
+    return render_template('uebersicht.html')
+
+@Geschaeftsfuehrer.route('/bearbeiten', methods=['GET','POST']) # sadece POSTla olmuyor. ya GET ve POST bir arada kullanilacak ya da ikisi de kullanilmayacak.
+def bearbeiten():
+
+    return render_template('bearbeiten.html')
