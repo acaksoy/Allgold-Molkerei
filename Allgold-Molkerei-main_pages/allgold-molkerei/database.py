@@ -20,7 +20,6 @@ class Adresse(db.Model):
         self.verkaufstelleID = verkaufstelleID
 
 
-
 class Verkaufstelle(db.Model):
     verkaufstelleID = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
