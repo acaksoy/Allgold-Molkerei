@@ -7,3 +7,15 @@ Verkaeufer = Blueprint('verkaeufer', __name__, template_folder='pages', static_f
 def home():
 
     return render_template('verkaeufer.html')
+
+@Verkaeufer.route('/verkaeufer/erfassen')
+def erfassen():
+
+    return render_template('verkerf.html')
+
+@Verkaeufer.route('/verkaeufer/prodErfassen')
+def proderfassen():
+
+    return render_template('proderf.html')
+
+
