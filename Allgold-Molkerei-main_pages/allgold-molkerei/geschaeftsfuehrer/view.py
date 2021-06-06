@@ -1,4 +1,9 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request,flash, redirect
+from .form import verkaufStelleForm
+from flask_sqlalchemy import SQLAlchemy
+from database import Verkaufstelle
+from database import db
+
 
 Geschaeftsfuehrer = Blueprint('geschaeftsfuehrer', __name__, template_folder='pages', static_folder='static')
 
@@ -10,6 +15,12 @@ def home():
 
 @Geschaeftsfuehrer.route('/neuVerStl', methods=['GET','POST']) # sadece POSTla olmuyor. ya GET ve POST bir arada kullanilacak ya da ikisi de kullanilmayacak.
 def neuVerkaufStelle():
+    if request.method == "POST":
+        verkaufstelle = Verkaufstelle(request.form['name'], request.form['typ'])
+        db.session.add(verkaufstelle)
+        db.session.commit()
+        flash("New markt added to dataASS")
+        return render_template("test.html", verkst = verkaufstelle)
 
     return render_template('Erstellen.html')
 

@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
-from app import db
 
+db = SQLAlchemy()
 
 class Adresse(db.Model):
     adressID = db.Column("adressID", db.Integer, primary_key=True)
@@ -24,7 +24,7 @@ class Adresse(db.Model):
 class Verkaufstelle(db.Model):
     verkaufstelleID = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
-    typ = db.Column(db.Column(30))
+    typ = db.Column(db.String(30))
 
     def __init__(self, name, typ):
         self.name = name
@@ -50,8 +50,8 @@ class Produkt(db.Model):
     produktID = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     preis = db.Column(db.Integer)
-    verfallsDatum = db.Column(db.DateTimeField)
-    anschaffungsDatum = db.Column(db.DateTimeField)
+    verfallsDatum = db.Column(db.DateTime)
+    anschaffungsDatum = db.Column(db.DateTime)
 
     def __init__(self, name, preis, verfallsDatum, anschaffungsDatum):
         self.name = name
@@ -62,7 +62,7 @@ class Produkt(db.Model):
 
 class Lieferung(db.Model):
     lieferID = db.Column(db.Integer, primary_key=True)
-    lieferDatum = db.Column(db.DateTimeField)
+    lieferDatum = db.Column(db.DateTime)
     lieferMenge = db.Column(db.Integer)
     verkstelleName = db.Column(db.String(50))
     adressID = db.Column(db.Integer, db.ForeignKey('adresse.adressID'), nullable=False)
@@ -80,7 +80,7 @@ class Lieferung(db.Model):
 
 class Verkauf(db.Model):
     verkaufID = db.Column(db.Integer, primary_key=True)
-    verkaufDatum = db.Column(db.DateTimeField)
+    verkaufDatum = db.Column(db.DateTime)
     verkaufMenge = db.Column(db.Integer)
     verkaufProduktName = db.Column(db.String(50))
     produktID = db.Column(db.Integer, db.ForeignKey('produkt.produktID'), nullable=False)
