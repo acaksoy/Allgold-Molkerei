@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+.div-center{
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  height: 50%; 
+  color: black;
+  text-align: center;
+  display: inline-block;
+  margin-top:30px;
+}
+.top_banner{
+	margin-top: 50px;
+}
+.big-barn{
+	margin-top: 50px;
+}
+
+.main-menu-button{
+	background-color: white;
+	color: black;
+	margin-left:10px;
+	border: 2px solid white;
+	padding: 20px 20px;
+	margin-top: 75px;
+}
+/* �ndert die Borderfarbe, wenn der Zeiger auf dem Button ist */
+.main-menu-button:hover{
+	border: 2px solid black;
+}
+
+
+

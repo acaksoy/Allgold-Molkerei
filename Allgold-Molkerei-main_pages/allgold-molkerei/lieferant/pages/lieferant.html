@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Allgold Supply Center</title>
+	<link href= "{{url_for('.static', filename='css/main.css')}}" rel="stylesheet"  type="text/css" />
+</head>
+<body>
+	<div class="div-center">
+		
+		<a href="{{url_for('index.home')}}">
+		<img src="{{url_for('.static', filename='resources/index_top_banner.jpg')}}" class="top-banner" width= "316" height="124" >
+		</a>
+		<h2>Lieferungsverwaltung</h2>
+		<br>
+		
+		<a href="../../geschaeftsfuehrer/pages/geschaeftsfuehrer.html"> <!-- uygun linkler koyulmali -->
+			<button name="verkauferfassen" type="submit" class="basic-button" style="width: 500px">
+				<b>Produktlieferliste</b>  <!-- text tarzi olusturulmali -->
+			</button>
+		</a> 
+		<br>
+		<a href="{{url_for('lieferant.erfassung')}}"> <!-- uygun linkler koyulmali -->
+			<button name="APerfassen" class="basic-button" style="width: 500px">
+				<b>Gelieferte Produkte erfassen</b>  <!-- text tarzi olusturulmali -->
+			</button>
+		</a> 
+	</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Allgold Supply Center</title>
+	<link href= "{{url_for('.static', filename='css/main.css')}}" rel="stylesheet"  type="text/css" />
+	<script src= "{{url_for('.static', filename='js/main.js')}}"  type="text/javascript"> </script>
+</head>
+<body>
+	<div class="div-center">
+		<a href="{{url_for('index.home')}}">
+			<img src="{{url_for('.static', filename='resources/index_top_banner.jpg')}}" class="top-banner" width= "316" height="124" >
+		</a>
+		<h2>Verkaufsverwaltung</h2>
+		<br>
+		<div class="burger-menu">
+            <button class="card-button" href="javascript:void(0);" onclick="toggleBurgerMenu()">die Preisliste</button>
+            <div id="burger-menu">
+                <a> pdf</a>
+                <a> html</a>
+            </div>
+
+        </div>
+		<a href="{{url_for('verkaeufer.erfassen')}}">
+			<button name="verkauferfassen" type="submit" class="basic-button" style="width: 500px">
+				<b>Verkauferfassen</b>  <!-- text tarzi olusturulmali -->
+			</button>
+		</a> 
+		<br>
+		<a href="{{url_for('verkaeufer.proderfassen')}}">
+			<button name="APerfassen" type="submit" class="basic-button" style="width: 500px">
+				<b>Ankommende Produkte erfassen</b>  <!-- text tarzi olusturulmali -->
+			</button>
+		</a> 
+	</div>
+</body>
+</html>

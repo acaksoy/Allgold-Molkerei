@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Allgold Supply Center</title>
+	<link href= "{{url_for('.static', filename='css/main.css')}}" rel="stylesheet"  type="text/css" /> <!--../static/css/main.css-->
+</head>
+	<body>
+		<div class="div-center">
+			<!-- <img src="../resources/index_top_banner.jpg" width= "474" height="192" > -->
+			<a href="{{url_for('index.home')}}">
+				<img src="../resources/index_top_banner.jpg" class="top-banner" width= "316" height="124" >
+			</a> <br> <br>
+			
+			<h1 style="margin-top: 30px;">Verkaufsstellen Übersicht</h1>
+			<a href="{{url_for('geschaeftsfuehrer.home')}}">
+				<button class="basic-button" style="margin-top: 10px; margin-bottom: 10px;">Zurück zur Liste</button>
+			</a>
+			<form>
+				<div  class="div-inline">
+					<div style="width: 200px">
+						<label for="name">Name:</label>
+						<input type="text" id="name" placeholder="Name eingeben" name="name">
+						<label for="id">ID:</label>
+						<input type="text" id="id" placeholder="ID eingeben" name="id">
+						<label for="typ">Typ:</label>
+						<input type="text" id="typ" placeholder="Typ eingeben" name="typ">
+					</div>
+					<div style="width: 200px">
+						<label for="ort">Ort:</label>
+						<input type="text" id="ort" placeholder="Ort eingeben" name="pswd">
+						<label for="plz">PLZ:</label>
+						<input type="text" id="plz" placeholder="plz eingeben" name="plz">
+						<label for="str">Straße:</label>
+						<input type="text" id="str" placeholder="Straße eingeben" name="str">
+						<label for="hnr">Hausnr:</label>
+						<input type="text" id="hnr" placeholder="Hausnummer eingeben" name="hnr">
+					</div>
+					<div style="width: 200px">
+						<label for="Beschreibung">Beschreibung:</label>
+						<textarea placeholder="Beschreibung eingeben" style="width: 200px; height: 200px"></textarea>
+					</div>
+				</div>								
+			</form>
+			<a href="{{url_for('geschaeftsfuehrer.bearbeiten')}}">
+				<button class="green-button" style="margin-top: 30px;" type="submit">Bearbeiten</button>
+			</a>
+		</div>
+	</body>
+</html>
