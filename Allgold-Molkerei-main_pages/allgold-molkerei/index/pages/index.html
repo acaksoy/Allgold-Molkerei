@@ -18,9 +18,9 @@
 				<br>
 				<b>Geschäftsführer</b>  <!-- text tarzi olusturulmali -->
 			</button>
-		</a> 
-		
-		<a href="../../lieferant/pages/lieferant.html">
+		</a>
+
+		<a href="{{url_for('lieferant.home')}}">
 			<button name="Lieferant" type="submit" class="main-menu-button">
 				<img src="{{url_for('.static', filename='resources/main_menu_button_lieferant.jpg')}}" width="80" height="80" />
 				<br>
@@ -28,7 +28,7 @@
 			</button>
 		</a> 
 		
-		<a href="../../verkaeufer/pages/verkaeufer.html">	
+		<a href="{{ url_for( 'verkaeufer.home' ) }}">
 			<button name="Verkäufer" class="main-menu-button">
 				<img src="{{url_for('.static', filename='resources/main_menu_button_verkauf.jpg')}}" width="80" height="80" />
 				<br>

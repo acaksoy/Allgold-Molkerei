@@ -5,12 +5,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Allgold Supply Center</title>
-    <link href="../css/main.css" rel="stylesheet" />
+    <link href= "{{url_for('.static', filename='css/main.css')}}" rel="stylesheet"  type="text/css" />
   </head>
 <body>
     <div class="div-center">
-        <a href="../../index/pages/index.html">
-			<img src="../resources/index_top_banner.jpg" class="top-banner" width= "316" height="124" >
+        <a href="{{url_for('index.home')}}">
+			<img src="{{url_for('.static', filename='resources/index_top_banner.jpg')}}" class="top-banner" width= "316" height="124" >
 		</a>
         <h1> Verkauferfassen </h1>
         <form action="../../index/pages/index.html"> 
@@ -28,11 +28,10 @@
              <input type="date" id="vkDat" name="vkDat"><br><br>
 
 			<button class="green-button" style="margin-top: 30px;" type="submit">Erfassen</button>
-		 	
-		 	<button class="red-button" style="margin-top: 30px;"> 
-				<a href="verkaeufer.html" style="text-decoration: none; color:black"> Abbrechen </a>
-			</button>
         </form>
+        <button class="red-button" style="margin-top: 30px;">
+            <a href="{{url_for('verkaeufer.home')}}" style="text-decoration: none; color:black"> Abbrechen </a>
+        </button>
       </div>
 </body>
 </html>
