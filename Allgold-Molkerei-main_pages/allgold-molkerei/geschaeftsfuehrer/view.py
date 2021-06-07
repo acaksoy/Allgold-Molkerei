@@ -72,16 +72,24 @@ def bearbeiten(verkaufstelleID):
         verkaufstelle = Verkaufstelle.query.get(verkaufstelleID)
         adresse = Adresse.query.get(verkaufstelle.adresse_ID)
 
-        verkaufstelle.name = request.form['name']
-        verkaufstelle.typ = request.form['typ']
+        if request.form['name'] is not "":
+            verkaufstelle.name = request.form['name']
+        if request.form['typ'] is not "":
+            verkaufstelle.typ = request.form['typ']
         db.session.merge(verkaufstelle)
         db.session.commit()
 
-        adresse.hausNR = request.form['hnr']
-        adresse.ort = request.form['ort']
-        adresse.plz = request.form['plz']
-        adresse.strasse = request.form['str']
-        adresse.beschreibung = request.form['beschr']
+        if request.form['hnr'] is not "":
+            adresse.hausNR = request.form['hnr']
+        if request.form['ort'] is not "":
+            adresse.ort = request.form['ort']
+        if request.form['plz'] is not "":
+            adresse.plz = request.form['plz']
+        if request.form['str'] is not "":
+            adresse.strasse = request.form['str']
+        if request.form['beschr'] is not "":
+            adresse.beschreibung = request.form['beschr']
+
         db.session.merge(adresse)
         db.session.commit()
 
