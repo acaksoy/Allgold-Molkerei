@@ -64,6 +64,7 @@ class Elements(db.Model):
         self.verfallsDatum =  Produkt.query.get(produktID).verfallsDatum
         self.anschaffungsDatum = anschaffungsDatum
         self.inventar_ID = inventar_ID
+        self.produktID = produktID
 
 
 class Produkt(db.Model):

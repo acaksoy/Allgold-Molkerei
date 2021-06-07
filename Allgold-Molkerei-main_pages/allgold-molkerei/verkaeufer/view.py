@@ -28,11 +28,11 @@ def proderfassen():
     if request.method == "POST":
        date = datetime.strptime(request.form['anDat'], '%Y-%m-%d').date()
        menge = int(request.form['mg'])
-       prID = int(request.form['prID'])
-       #for x in range(menge):
-       proderfassen = Elements( prID, request.form['inID'],date)
-       db.session.add(proderfassen)
-       db.session.commit()
+
+       for x in range(menge):
+           proderfassen = Elements( request.form['prID'], request.form['inID'],date)
+           db.session.add(proderfassen)
+           db.session.commit()
 
        flash("Lieferung erfolgreich erfasst")
 
