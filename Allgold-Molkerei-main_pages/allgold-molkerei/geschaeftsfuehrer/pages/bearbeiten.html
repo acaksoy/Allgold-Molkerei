@@ -13,37 +13,40 @@
 				<img src="../resources/index_top_banner.jpg" class="top-banner" width= "316" height="124" >
 			</a>
 			<h1 style="margin-top: 30px;">Verkaufsstelle Bearbeiten</h1>
-			<a href="{{url_for('geschaeftsfuehrer.uebersicht')}}">
+			<a href="{{url_for('geschaeftsfuehrer.uebersicht', verkaufstelleID = verkaufstelle.verkaufstelleID)}}">
 				<button class="orange-button" style="margin-top: 10px; margin-bottom: 10px;">Bearbeitung abbrechen</button>
 			</a>
-			<form>
+			<form action = {{request.path}} method = "POST">
 				<div  class="div-inline">
 					<div style="width: 200px">
 						<label for="name">Name:</label>
-						<input type="text" id="name" placeholder="Name eingeben" name="name">
+						<input type="text" id="name" placeholder="{{verkaufstelle.name}}" name="name">
 						<label for="id">ID:</label>
-						<input type="text" id="id" placeholder="ID eingeben" name="id">
+						<input type="text" id="id" placeholder="{{verkaufstelle.verkaufstelleID}}" name="id">
 						<label for="typ">Typ:</label>
-						<input type="text" id="typ" placeholder="Typ eingeben" name="typ">
+						<input type="text" id="typ" placeholder="{{verkaufstelle.typ}}" name="typ">
 					</div>
 					<div style="width: 200px">
 						<label for="ort">Ort:</label>
-						<input type="text" id="ort" placeholder="Ort eingeben" name="pswd">
+						<input type="text" id="ort" placeholder="{{adresse.ort}}" name="ort">
 						<label for="plz">PLZ:</label>
-						<input type="text" id="plz" placeholder="plz eingeben" name="plz">
+						<input type="text" id="plz" placeholder="{{adresse.plz}}" name="plz">
 						<label for="str">Straße:</label>
-						<input type="text" id="str" placeholder="Straße eingeben" name="str">
+						<input type="text" id="str" placeholder="{{adresse.strasse}}" name="str">
 						<label for="hnr">Hausnr:</label>
-						<input type="text" id="hnr" placeholder="Hausnummer eingeben" name="hnr">
+						<input type="text" id="hnr" placeholder="{{adresse.hausNR}}" name="hnr">
 					</div>
 					<div style="width: 200px">
-						<label for="Beschreibung">Beschreibung:</label>
-						<textarea placeholder="Beschreibung eingeben" style="width:200px; height:200px"></textarea>
+						<label for="beschr">Beschreibung:</label>
+						<textarea id="beschr" placeholder="{{adresse.beschreibung}}" style="width: 200px; height: 200px" name="beschr"></textarea>
 					</div>
 				</div>
 				<button style="margin-right: 250px" class="green-button" style="margin-top: 30px;" type="submit">Speichern</button>
-				<button style="margin-left: 250px" class="red-button" style="margin-top: 30px;" >Löschen</button>
+				<button style="margin-left: 250px" class="red-button" style="margin-top: 30px;" > <!-- Bu buttonu fomrdan cikarmaya gerek yok -->
+					<a href="{{url_for('geschaeftsfuehrer.loeschen', verkaufstelleID = verkaufstelle.verkaufstelleID)}}" > Löschen </a>
+				</button>
 			</form>
+
 		</div>
 	</body>
 </html>

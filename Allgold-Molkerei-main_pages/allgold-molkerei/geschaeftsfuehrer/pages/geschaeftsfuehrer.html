@@ -19,16 +19,21 @@
 		<div class="burger-menu">
 			<button class="card-button" href="javascript:void(0);" onclick="toggleBurgerMenu()">die Preisliste</button>
 			<div id="burger-menu">
-				<a> pdf</a>
-				<a> html</a>
+				<a href="{{url_for('geschaeftsfuehrer.preisliste')}}"> html</a> <!-- link tarzi düzeltilmel -->
+				<a> pdf </a>
 			</div>
-			
 		</div>
-		
-		
+
 		<div id="liste" class="outter-box">
 			<h2>Verkaufsstellen</h2>  <!--  Cards created here -->
-			
+			{% for verkaufstelle in alleVerkaufstelle %}
+				<div class = "card">
+					<b>Name: {{verkaufstelle.name}}</b> <br>
+					<b>ID: {{verkaufstelle.verkaufstelleID}}</b> <br>
+					<a href="{{url_for('geschaeftsfuehrer.uebersicht', verkaufstelleID = verkaufstelle.verkaufstelleID)}}"> <button class="card-button"> Uebersicht </button> </a>
+					<a> <button class="card-button"> Verkaufszahlen </button> </a>
+				</div>
+			{% endfor %}
 		</div>
 		
 		

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>ProduktID</th>
+            <th>Name</th>
+            <th>Preis</th>
+            <th>Verfallsdatum</th>
+            <th>Anschaffungsdatum</th>
+        </tr>
+        {% for produkt in alleProdukte %}
+        <tr>
+            <th>{{produkt.produktID}}</th>
+            <th>{{produkt.name}}</th>
+            <th>{{produkt.preis}}</th>
+            <th>{{produkt.verfallsDatum}}</th>
+            <th>{{produkt.anschaffungsDatum}}</th>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

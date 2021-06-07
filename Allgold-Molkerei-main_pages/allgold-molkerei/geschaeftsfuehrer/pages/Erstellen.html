@@ -14,19 +14,19 @@
 				<img src="{{url_for('.static', filename='resources/index_top_banner.jpg')}}" class="top-banner" width= "316" height="124" >
 			</a>
 			<h1 style="margin-top: 30px;">Verkaufsstelle Eröffnen</h1>
-			<form>
+			<form action = {{request.path}} method = "POST">
 				<div  class="div-inline">
 					<div style="width: 200px">
 						<label for="name">Name:</label>
 						<input type="text" id="name" placeholder="Name eingeben" name="name">
-						<label for="id">ID:</label>
-						<input type="text" id="id" placeholder="ID eingeben" name="id">
-						<label for="typ">Typ:</label>
+						<label for="typ">Type:</label>
 						<input type="text" id="typ" placeholder="Typ eingeben" name="typ">
+						<!--<input type="text" id="id" placeholder="ID eingeben" name="id">
+						<label for="typ">Typ:</label>-->
 					</div>
 					<div style="width: 200px">
 						<label for="ort">Ort:</label>
-						<input type="text" id="ort" placeholder="Ort eingeben" name="pswd">
+						<input type="text" id="ort" placeholder="Ort eingeben" name="ort">
 						<label for="plz">PLZ:</label>
 						<input type="text" id="plz" placeholder="plz eingeben" name="plz">
 						<label for="str">Straße:</label>
@@ -36,7 +36,7 @@
 					</div>
 					<div style="width: 200px">
 						<label for="Beschreibung">Beschreibung:</label>
-						<textarea placeholder="Beschreibung eingeben" style="width:200px; height:200px"></textarea>
+						<textarea id="Beschreibung" placeholder="Beschreibung eingeben" style="width:200px; height:200px" name="beschr"></textarea>
 					</div>
 				</div>
 				<button style="margin-right: 250px" class="green-button" style="margin-top: 30px;" type="submit">Erstellen</button>
