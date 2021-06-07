@@ -13,19 +13,19 @@
 			<img src="{{url_for('.static', filename='resources/index_top_banner.jpg')}}" class="top-banner" width= "316" height="124" >
 		</a>
 		<h1> Produkterfassen </h1>
-			<form action="../../index/pages/index.html"> 
+			<form action = {{request.path}} method="POST">
 		   
-		   	 	<label for="vkID">Verkaufsstellen ID:</label><br>
-		   	 	<input type="text" id="vkID" name="vkID"><br><br>
+		   	 	<label for="inID">Inventar ID:</label><br>
+		   	 	<input type="text" id="inID" name="inID"><br><br>
 	
 		     	<label for="prID">Produkt ID:</label><br>
-			     <input type="text" id="prID" name="prID"><br><br>
+			    <input type="text" id="prID" name="prID"><br><br>
 			
 			     <label for="mg">Menge:</label><br>
 			     <input type="text" id="mg" name="mg"><br><br>
 			
-			     <label for="vkDat">Lieferdatum:</label><br>
-			     <input type="date" id="vkDat" name="vkDat"><br><br>
+			     <label for="anDat">Lieferdatum:</label><br>
+			     <input type="date" id="anDat" name="anDat"><br><br>
 			     
 			     <button class="green-button" style="margin-top: 30px;" type="submit">Erstellen</button>
 			</form>

@@ -52,17 +52,17 @@ class Elements(db.Model):
     elementID = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     preis = db.Column(db.Integer)
-    verfallsDatum = db.Column(db.DateTime)
-    anschaffungsDatum = db.Column(db.DateTime)
+    verfallsDatum = db.Column(db.Date)
+    anschaffungsDatum = db.Column(db.Date)
 
     inventar_ID = db.Column(db.Integer, db.ForeignKey('inventar.inventarID'), nullable=False)
     produktID = db.Column(db.Integer, db.ForeignKey('produkt.produktID'), nullable=False)
 
-    def __init__(self, produktID, inventar_ID):
+    def __init__(self, produktID, inventar_ID, anschaffungsDatum):
         self.name = Produkt.query.get(produktID).name
         self.preis = Produkt.query.get(produktID).preis
-        self.verfallsDatum =  Produkt.query.get(produktID).verfallsdatum
-        self.anschaffungsDatum = Produkt.query.get(produktID).anschaffungsDatum
+        self.verfallsDatum =  Produkt.query.get(produktID).verfallsDatum
+        self.anschaffungsDatum = anschaffungsDatum
         self.inventar_ID = inventar_ID
 
 
@@ -70,20 +70,19 @@ class Produkt(db.Model):
     produktID = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     preis = db.Column(db.Integer)
-    verfallsDatum = db.Column(db.DateTime)
-    anschaffungsDatum = db.Column(db.DateTime)
+    verfallsDatum = db.Column(db.Date)
 
 
-    def __init__(self, name, preis, verfallsDatum, anschaffungsDatum):
+    def __init__(self, name, preis, verfallsDatum):
         self.name = name
         self.preis = preis
         self.verfallsDatum = verfallsDatum
-        self.anschaffungsDatum = anschaffungsDatum
+
 
 
 class Lieferung(db.Model):
     lieferID = db.Column(db.Integer, primary_key=True)
-    lieferDatum = db.Column(db.DateTime)
+    lieferDatum = db.Column(db.Date)
     lieferMenge = db.Column(db.Integer)
     verkstelleName = db.Column(db.String(50))
 
@@ -100,7 +99,7 @@ class Lieferung(db.Model):
 
 class Verkauf(db.Model):
     verkaufID = db.Column(db.Integer, primary_key=True)
-    verkaufDatum = db.Column(db.DateTime)
+    verkaufDatum = db.Column(db.Date)
     verkaufMenge = db.Column(db.Integer)
     verkaufProduktName = db.Column(db.String(50))
 

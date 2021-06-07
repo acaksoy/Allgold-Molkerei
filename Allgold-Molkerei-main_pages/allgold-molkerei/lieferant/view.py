@@ -13,7 +13,7 @@ def home():
 @Lieferant.route('/erfassen', methods=['GET','POST'])
 def erfassung():
     if request.method == "POST":
-       date = datetime.strptime(request.form['lfDat'], '%Y-%m-%d')
+       date = datetime.strptime(request.form['lfDat'], '%Y-%m-%d').date()
        lieferfass = Lieferung(date, request.form['mg'], request.form['name'], request.form['prID'], request.form['vkID'])
        db.session.add(lieferfass)
        db.session.commit()

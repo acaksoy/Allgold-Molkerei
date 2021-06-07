@@ -12,25 +12,22 @@
         <a href="{{url_for('index.home')}}">
 			<img src="{{url_for('.static', filename='resources/index_top_banner.jpg')}}" class="top-banner" width= "316" height="124" >
 		</a>
-        <h1> Verkauferfassen </h1>
+        <h1> Produkt in das Sortiment aufnehmen </h1>
         <form action = {{request.path}} method="POST">
 
-             <label for="vkID">Verkaufsstellen ID:</label><br>
-             <input type="text" id="vkID" name="vkID"><br><br>
+             <label for="name">Produkt Name:</label><br>
+             <input type="text" id="name" name="name"><br><br>
 
-             <label for="prID">Produkt ID:</label><br>
-             <input type="text" id="prID" name="prID"><br><br>
+             <label for="preis">Preis:</label><br>
+             <input type="text" id="preis" name="preis"><br><br>
 
-             <label for="mg">Menge:</label><br>
-             <input type="text" id="mg" name="mg"><br><br>
-
-             <label for="vkDat">Verkaufsdatum:</label><br>
-             <input type="date" id="vkDat" name="vkDat"><br><br>
+             <label for="vrDat">Verfallsdatum:</label><br>
+             <input type="date" id="vrDat" name="vrDat"><br><br>
 
 			<button class="green-button" style="margin-top: 30px;" type="submit">Erfassen</button>
         </form>
         <button class="red-button" style="margin-top: 30px;">
-            <a href="{{url_for('verkaeufer.home')}}" style="text-decoration: none; color:black"> Abbrechen </a>
+            <a href="{{url_for('geschaeftsfuehrer.home')}}" style="text-decoration: none; color:black"> Abbrechen </a>
         </button>
       </div>
 </body>

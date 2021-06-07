@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from database import Verkaufstelle, Adresse, Inventar, Produkt
 from database import db
 
@@ -13,18 +13,7 @@ Geschaeftsfuehrer = Blueprint('geschaeftsfuehrer', __name__, template_folder='pa
 def home():
     if request.method == "GET":
         alleVerkaufstelle = Verkaufstelle.query.all()
-        if Produkt.query.first() is None:
-            milch = Produkt("H-Milch", 0.99, datetime.strptime("2021-10-21", "%Y-%m-%d"),
-                            datetime.strptime("2021-07-10", "%Y-%m-%d"))
-            butter = Produkt("Butter", 2.00, datetime.strptime("2021-09-10", "%Y-%m-%d"),
-                             datetime.strptime("2021-07-10", "%Y-%m-%d"))
-            schlagsahne = Produkt("Sahne", 0.49, datetime.strptime("2022-03-17", "%Y-%m-%d"),
-                                  datetime.strptime("2021-07-10", "%Y-%m-%d"))
 
-            db.session.add(milch)
-            db.session.add(butter)
-            db.session.add(schlagsahne)
-            db.session.commit()
         return render_template('geschaeftsfuehrer.html', alleVerkaufstelle = alleVerkaufstelle)
 
 @Geschaeftsfuehrer.route('/preisliste', methods=['GET','POST'])
@@ -33,6 +22,17 @@ def preisliste():
     alleProdukte = Produkt.query.all()
     return render_template('preisliste.html', alleProdukte = alleProdukte)
 
+@Geschaeftsfuehrer.route('prodHinz', methods = ['GET', 'POST'])
+def neuProd():
+    if request.method == "POST":
+
+        date1 = datetime.strptime(request.form['vrDat'], '%Y-%m-%d').date()
+        prod = Produkt(request.form['name'], request.form['preis'], date1)
+        db.session.add(prod)
+        db.session.commit()
+        flash("Produkt gespeichert", "success")
+        return redirect(url_for(".home", prod=prod))
+    return render_template('produktHinz.html')
 
 @Geschaeftsfuehrer.route('/neuVerStl', methods=['GET','POST']) # sadece POSTla olmuyor. ya GET ve POST bir arada kullanilacak ya da ikisi de kullanilmayacak.
 def neuVerkaufStelle():

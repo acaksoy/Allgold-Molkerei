@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template,request, flash
-from database import Elements, Verkauf
+from flask import Blueprint, render_template,request, flash, redirect, url_for
+from database import Elements, Verkauf,Produkt, db
 from datetime import datetime
 Verkaeufer = Blueprint('verkaeufer', __name__, template_folder='pages', static_folder='static', static_url_path='/verkaeufer/static')
 
@@ -11,26 +11,32 @@ def home():
 
 @Verkaeufer.route('/erfassen', methods=['GET','POST'])
 def erfassen():
-    if request.method == "POST" and request.form['vkID'] is not "":
-       date = datetime.strptime(request.form['vkDat'], '%Y-%m-%d')
-       verkerf = Verkauf(request.form['vkID'], request.form['prID'],request.form['mg'],date)
+    if request.method == "POST":
+       date = datetime.strptime(request.form['vkDat'], '%Y-%m-%d').date()
+       verkerf = Verkauf(date,request.form['mg'],request.form['prID'],request.form['vkID'])
        db.session.add(verkerf)
        db.session.commit()
-       flash("Lieferung erfolgreich erfasst")
-       return redirect(url_for("verkaeufer.erfassen", verkerf=verkerf))
+       flash('Lieferung erfolgreich erfasst!', 'success')
+       return render_template("verkaeufer.html")
+       #return redirect(url_for(".home", verkerf=verkerf))
     else:
-       flash("Gültige Verkaufsstellen ID eingeben!")
+       flash('Gültige Verkaufsstellen ID eingeben!', 'error')
     return render_template('verkerf.html')
 
-@Verkaeufer.route('/verkaeufer/prodErfassen')
+@Verkaeufer.route('/verkaeufer/prodErfassen', methods=['GET','POST'])
 def proderfassen():
     if request.method == "POST":
-       date = datetime.strptime(request.form['lfDat'], '%Y-%m-%d')
-       proderfassen = Elements(request.form['name'], date, request.form['mg'],  request.form['prID'],)
-       db.session.add(lieferfass)
+       date = datetime.strptime(request.form['anDat'], '%Y-%m-%d').date()
+       menge = int(request.form['mg'])
+       prID = int(request.form['prID'])
+       #for x in range(menge):
+       proderfassen = Elements( prID, request.form['inID'],date)
+       db.session.add(proderfassen)
        db.session.commit()
+
        flash("Lieferung erfolgreich erfasst")
-       return render_template("test1.html", proderfassen=proderfassen)
+
+       return redirect(url_for(".home", proderfassen=proderfassen))
     return render_template('proderf.html')
 
 
