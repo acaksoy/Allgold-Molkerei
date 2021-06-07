@@ -22,13 +22,18 @@
 				<a> pdf</a>
 				<a> html</a>
 			</div>
-			
 		</div>
-		
-		
+
 		<div id="liste" class="outter-box">
 			<h2>Verkaufsstellen</h2>  <!--  Cards created here -->
-			
+			{% for verkaufstelle in alleVerkaufstelle %}
+				<div class = "card">
+					<b>Name: {{verkaufstelle.name}}</b> <br>
+					<b>ID: {{verkaufstelle.verkaufstelleID}}</b> <br>
+					<a href="{{url_for('geschaeftsfuehrer.uebersicht', verkaufstelleID = verkaufstelle.verkaufstelleID)}}"> <button class="card-button"> Uebersicht </button> </a>
+					<a> <button class="card-button"> Verkaufszahlen </button> </a>
+				</div>
+			{% endfor %}
 		</div>
 		
 		

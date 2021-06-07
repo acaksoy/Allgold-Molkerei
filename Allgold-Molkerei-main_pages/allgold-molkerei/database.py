@@ -9,16 +9,15 @@ class Adresse(db.Model):
     ort = db.Column(db.String(20))
     strasse = db.Column(db.String(50))
     beschreibung = db.Column(db.String(200))
-    verkaufstelleID = db.Column(db.Integer, db.ForeignKey('verkaufstelle.verkaufstelleID'), nullable=False)
 
-    def __init__(self, hausNr, plz, ort, strasse, beschreibung, verkaufstelleID):
+    _verkaufstelle = db.relationship("Verkaufstelle", uselist=False, back_populates="_adresse")
+
+    def __init__(self, hausNr, plz, ort, strasse, beschreibung):
         self.hausNR = hausNr
         self.plz = plz
         self.ort = ort
         self.strasse = strasse
         self.beschreibung = beschreibung
-        self.verkaufstelleID = verkaufstelleID
-
 
 
 class Verkaufstelle(db.Model):
@@ -26,23 +25,25 @@ class Verkaufstelle(db.Model):
     name = db.Column(db.String(50))
     typ = db.Column(db.String(30))
 
-    def __init__(self, name, typ):
+    adresse_ID = db.Column(db.Integer, db.ForeignKey('adresse.adressID'), nullable=False)
+    _adresse = db.relationship("Adresse", back_populates="_verkaufstelle")
+
+    def __init__(self, name, typ, adresse_ID):
         self.name = name
         self.typ = typ
+        self.adresse_ID = adresse_ID
+
 
 
 class Inventar(db.Model):
     inventarID = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     prodMenge = db.Column(db.Integer)
-    verkaufstelleID = db.Column(db.Integer, db.ForeignKey('verkaufstelle.verkaufstelleID'), nullable=False)
-    produktID = db.Column(db.Integer, db.ForeignKey('produkt.produktID'), nullable=False)
 
-    def __init__(self, name, prodMenge, verkaufstelleID, produktID):
+
+    def __init__(self, name, prodMenge):
         self.name = name
         self.prodMenge = prodMenge
-        self.verkaufstelleID = verkaufstelleID
-        self.produktID = produktID
 
 
 
@@ -52,6 +53,7 @@ class Produkt(db.Model):
     preis = db.Column(db.Integer)
     verfallsDatum = db.Column(db.DateTime)
     anschaffungsDatum = db.Column(db.DateTime)
+
 
     def __init__(self, name, preis, verfallsDatum, anschaffungsDatum):
         self.name = name
@@ -65,17 +67,13 @@ class Lieferung(db.Model):
     lieferDatum = db.Column(db.DateTime)
     lieferMenge = db.Column(db.Integer)
     verkstelleName = db.Column(db.String(50))
-    adressID = db.Column(db.Integer, db.ForeignKey('adresse.adressID'), nullable=False)
-    produktID = db.Column(db.Integer, db.ForeignKey('produkt.produktID'), nullable=False)
-    verkaufstelleID = db.Column(db.Integer, db.ForeignKey('verkaufstelle.verkaufstelleID'), nullable=False)
 
-    def __init__(self, lieferDatum, lieferMenge, verkstelleName, adressID,produktID,verkaufstelleID):
+
+    def __init__(self, lieferDatum, lieferMenge, verkstelleName):
         self.lieferDatum = lieferDatum
         self.lieferMenge = lieferMenge
         self.verkstelleName = verkstelleName
-        self.adressID = adressID
-        self.produktID = produktID
-        self.verkaufstelleID = verkaufstelleID
+
 
 
 class Verkauf(db.Model):
@@ -83,12 +81,9 @@ class Verkauf(db.Model):
     verkaufDatum = db.Column(db.DateTime)
     verkaufMenge = db.Column(db.Integer)
     verkaufProduktName = db.Column(db.String(50))
-    produktID = db.Column(db.Integer, db.ForeignKey('produkt.produktID'), nullable=False)
-    verkaufstelleID = db.Column(db.Integer, db.ForeignKey('verkaufstelle.verkaufstelleID'), nullable=False)
 
-    def __init__(self, verkaufDatum, verkaufMenge, verkaufProduktName, produktID,verkaufstelleID):
+
+    def __init__(self, verkaufDatum, verkaufMenge):
         self.verkaufDatum = verkaufDatum
         self.verkaufMenge = verkaufMenge
-        self.verkaufProduktName = verkaufProduktName
-        self.produktID = produktID
-        self.verkaufstelleID = verkaufstelleID
+
