@@ -1,7 +1,9 @@
+import datetime
+
 from flask import Flask, render_template, url_for, Blueprint
 from flask_sqlalchemy import SQLAlchemy
 from factory import LoadBlueprints
-from database import db
+from database import db, Produkt
 
 
 app = Flask(__name__, static_url_path='/static/admin')
@@ -17,6 +19,7 @@ db.init_app(app)
 
 with app.app_context():
     db.create_all()
+
 
 #Load Blueprints
 LoadBlueprints(app)

@@ -1,5 +1,7 @@
+from datetime import datetime
+
 from flask import Blueprint, render_template, request, redirect, url_for
-from database import Verkaufstelle, Adresse
+from database import Verkaufstelle, Adresse, Inventar, Produkt
 from database import db
 
 
@@ -11,20 +13,41 @@ Geschaeftsfuehrer = Blueprint('geschaeftsfuehrer', __name__, template_folder='pa
 def home():
     if request.method == "GET":
         alleVerkaufstelle = Verkaufstelle.query.all()
+        if Produkt.query.first() is None:
+            milch = Produkt("H-Milch", 0.99, datetime.strptime("2021-10-21", "%Y-%m-%d"),
+                            datetime.strptime("2021-07-10", "%Y-%m-%d"))
+            butter = Produkt("Butter", 2.00, datetime.strptime("2021-09-10", "%Y-%m-%d"),
+                             datetime.strptime("2021-07-10", "%Y-%m-%d"))
+            schlagsahne = Produkt("Sahne", 0.49, datetime.strptime("2022-03-17", "%Y-%m-%d"),
+                                  datetime.strptime("2021-07-10", "%Y-%m-%d"))
+
+            db.session.add(milch)
+            db.session.add(butter)
+            db.session.add(schlagsahne)
+            db.session.commit()
         return render_template('geschaeftsfuehrer.html', alleVerkaufstelle = alleVerkaufstelle)
 
+@Geschaeftsfuehrer.route('/preisliste', methods=['GET','POST'])
+def preisliste():
 
+    alleProdukte = Produkt.query.all()
+    return render_template('preisliste.html', alleProdukte = alleProdukte)
 
 
 @Geschaeftsfuehrer.route('/neuVerStl', methods=['GET','POST']) # sadece POSTla olmuyor. ya GET ve POST bir arada kullanilacak ya da ikisi de kullanilmayacak.
 def neuVerkaufStelle():
     if request.method == "POST":
+        nameInventar = "Inventar des " + request.form['name']
+        inventar = Inventar(nameInventar)
+        db.session.add(inventar)
+        db.session.commit()
+
         adress = Adresse(request.form['hnr'], request.form['plz'], request.form['ort'], request.form['str'],
                          request.form['beschr'])
         db.session.add(adress)
         db.session.commit()
 
-        neuVerkaufstelle = Verkaufstelle(request.form['name'], request.form['typ'], adress.adressID)
+        neuVerkaufstelle = Verkaufstelle(request.form['name'], request.form['typ'], adress.adressID, inventar.inventarID)
         db.session.add(neuVerkaufstelle)
         db.session.commit()
 
