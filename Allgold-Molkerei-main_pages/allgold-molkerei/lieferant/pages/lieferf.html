@@ -14,7 +14,7 @@
 			<img src="{{url_for('.static', filename='resources/index_top_banner.jpg')}}" class="top-banner" width= "316" height="124" >
 		</a> <br> <br>
 		<h1> Lieferungerfassen </h1>
-		<form>
+		<form action = {{request.path}} method="post">
 	   
 	   	 	<label for="vkID">Verkaufsstellen ID: <br>
 	   	 	<input type="text" id="vkID" name="vkID"></label><br>
