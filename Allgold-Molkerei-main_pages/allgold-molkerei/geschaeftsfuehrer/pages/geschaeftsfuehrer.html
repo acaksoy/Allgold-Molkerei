@@ -15,15 +15,17 @@
 		<a href="{{url_for('index.home')}}">
 			<img src="{{url_for('.static', filename='resources/index_top_banner.jpg')}}" class="top-banner" width= "316" height="124" >
 		</a> <br> <br>
-		
+
 		<div class="burger-menu">
-			<button class="card-button" href="javascript:void(0);" onclick="toggleBurgerMenu()">die Preisliste</button>
+			<button class="card-button" href="javascript:void(0);" onclick="toggleBurgerMenu()">Dokumente</button>
 			<div id="burger-menu">
-				<a href="{{url_for('geschaeftsfuehrer.preisliste')}}"> html</a> <!-- link tarzi düzeltilmel -->
-				<a> pdf </a>
+				<a href="{{url_for('geschaeftsfuehrer.liste', typ = 'preisliste')}}"> preisliste html</a>
+				<a href="{{url_for('geschaeftsfuehrer.createPDF',typ = 'preisliste', verkaufstelleID = '0')}}"> preisliste pdf </a>
+				<a href="{{url_for('geschaeftsfuehrer.liste', typ = 'lieferungen')}}"> lieferungen html</a>
+				<a href="{{url_for('geschaeftsfuehrer.createPDF',typ = 'lieferungen', verkaufstelleID = '0')}}"> lieferungen pdf </a>
 			</div>
 		</div>
-		<a href="{{url_for('geschaeftsfuehrer.neuProd')}}"> Produkt in das Sortiment aufnehmen</a>
+		<a href="{{url_for('geschaeftsfuehrer.neuProd')}}"> <button class="basic-button"> Produkt in das Sortiment aufnehmen </button></a>
 		<div id="liste" class="outter-box">
 			<h2>Verkaufsstellen</h2>  <!--  Cards created here -->
 			{% for verkaufstelle in alleVerkaufstelle %}
@@ -32,6 +34,7 @@
 					<b>ID: {{verkaufstelle.verkaufstelleID}}</b> <br>
 					<a href="{{url_for('geschaeftsfuehrer.uebersicht', verkaufstelleID = verkaufstelle.verkaufstelleID)}}"> <button class="card-button"> Uebersicht </button> </a>
 					<a> <button class="card-button"> Verkaufszahlen </button> </a>
+					<a href="{{url_for('geschaeftsfuehrer.createPDF',typ = 'inventar', verkaufstelleID = verkaufstelle.verkaufstelleID)}}"> <button class="card-button"> Inventarbestand </button> </a>
 				</div>
 			{% endfor %}
 		</div>

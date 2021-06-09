@@ -1,8 +1,9 @@
 from datetime import datetime
 
-from flask import Blueprint, render_template, request, redirect, url_for, flash
-from database import Verkaufstelle, Adresse, Inventar, Produkt
+from flask import Blueprint, render_template, request, redirect, url_for, make_response,flash
+from database import Verkaufstelle, Adresse, Inventar, Produkt, Lieferung, Elements
 from database import db
+import pdfkit
 
 
 
@@ -16,11 +17,18 @@ def home():
 
         return render_template('geschaeftsfuehrer.html', alleVerkaufstelle = alleVerkaufstelle)
 
-@Geschaeftsfuehrer.route('/preisliste', methods=['GET','POST'])
-def preisliste():
+@Geschaeftsfuehrer.route('/preisliste/<string:typ>', methods=['GET','POST'])
+def liste(typ):
+    if typ == "preisliste":
+        alleProdukte = Produkt.query.all()
+        return render_template('preisliste.html', alleProdukte=alleProdukte)
+    if typ == "lieferungen":
+        alleLieferungen = Lieferung.query.all()
+        return render_template('lieferungen.html', alleLieferungen=alleLieferungen)
 
-    alleProdukte = Produkt.query.all()
-    return render_template('preisliste.html', alleProdukte = alleProdukte)
+
+
+
 
 @Geschaeftsfuehrer.route('prodHinz', methods = ['GET', 'POST'])
 def neuProd():
@@ -104,3 +112,29 @@ def loeschen(verkaufstelleID):
     db.session.commit()
 
     return redirect(url_for("geschaeftsfuehrer.home"))
+
+@Geschaeftsfuehrer.route('/createdPDF/<string:typ>/<int:verkaufstelleID>', methods=['GET','POST'])
+def createPDF(typ, verkaufstelleID):
+    rendered = None
+    if typ == "preisliste":
+        jedesElement= Produkt.query.all()
+        rendered = render_template("preislistePDF.html", jedesElement=jedesElement)
+    if typ == "lieferungen":
+        jedesElement = Lieferung.query.all()
+        rendered = render_template("lieferungenPDF.html", jedesElement=jedesElement)
+    if typ == "inventar":
+        verkstl = Verkaufstelle.query.get(verkaufstelleID)
+        inventar = Inventar.query.get(verkstl.inventar_ID)
+        jedesElement = Elements.query.filter_by(inventar_ID= inventar.inventarID).all()
+        rendered = render_template("inventarPDF.html", jedesElement=jedesElement, verkstl= verkstl, inventar= inventar)
+
+    config = pdfkit.configuration(wkhtmltopdf=r"C:\Programme\wkhtmltopdf\bin\wkhtmltopdf.exe")
+    options = {"enable-local-file-access": None}
+
+
+    pdf = pdfkit.from_string(rendered, False, configuration=config, options=options)
+    response = make_response(pdf)
+    response.headers["Content-Type"] = "application/pdf"
+    response.headers["Content-Disposition"] = "inline;filename = output.pdf"
+    return response
+

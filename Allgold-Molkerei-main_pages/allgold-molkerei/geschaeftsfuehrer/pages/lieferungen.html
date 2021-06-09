@@ -15,18 +15,22 @@
         <h1> Preisliste </h1>
         <table style="width:100%">
             <tr>
+                <th>LieferID</th>
+                <th>Liefertermin</th>
+                <th>Liefermenge</th>
+                <th>Name der Verkaufstelle</th>
+                <th>VerkaufstelleID</th>
                 <th>ProduktID</th>
-                <th>Name</th>
-                <th>Preis</th>
-                <th>Verfallsdatum</th>
 
             </tr>
-            {% for produkt in alleProdukte %}
+            {% for lieferung in alleLieferungen %}
             <tr>
-                <th>{{produkt.produktID}}</th>
-                <th>{{produkt.name}}</th>
-                <th>{{produkt.preis}}</th>
-                <th>{{produkt.verfallsDatum}}</th>
+                <th>{{lieferung.lieferID}}</th>
+                <th>{{lieferung.lieferDatum}}</th>
+                <th>{{lieferung.lieferMenge}}</th>
+                <th>{{lieferung.verkstelleName}}</th>
+                <th>{{lieferung.produktID}}</th>
+                <th>{{lieferung.verkaufstelleID}}</th>
             </tr>
             {% endfor %}
         </table>

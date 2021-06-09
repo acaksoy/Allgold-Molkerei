@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Preisliste</title>
+	<link href= "C:\Users\arifc\Desktop\SS21\ITT\projRepo\Allgold-Molkerei-main_pages\allgold-molkerei\geschaeftsfuehrer\static\css\pdf.css"  type="text/css" rel="stylesheet"/> <!--../static/css/main.css-->
+</head>
+<body>
+    <div class="div-center">
+
+        <img src="C:\Users\arifc\Desktop\SS21\ITT\projRepo\Allgold-Molkerei-main_pages\allgold-molkerei\geschaeftsfuehrer\static\resources\index_top_banner.jpg" class="top-banner" width= "632" height="248" >
+
+        <h1> {{ inventar.name }} </h1>
+        <table style="width:100%">
+            <tr>
+                <th>ElementID</th>
+                <th>Name</th>
+                <th>Preis</th>
+                <th>Verfallsdatum</th>
+                <th>Anschaffungsdatum</th>
+                <th>InventarID</th>
+                <th>ProduktID</th>
+            </tr>
+            {% for element in jedesElement %}
+            <tr>
+                <td>{{element.elementID}}</td>
+                <td>{{element.name}}</td>
+                <td>{{element.preis}}</td>
+                <td>{{element.verfallsDatum}}</td>
+                <td>{{element.anschaffungsDatum}}</td>
+                <td>{{element.inventar_ID}}</td>
+                <td>{{element.produktID}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+
+
+</body>
+</html>
