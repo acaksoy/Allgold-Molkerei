@@ -24,10 +24,10 @@ def erfassen():
        invID = verkstelle.inventar_ID
        INV = Inventar.query.get(invID)
 
-       #for x in range(menge):
-       element = Elements.query.filter_by(inventar_ID = INV, produktID = pID).first()
-       db.session.delete(element)
-       db.session.commit()
+       for x in range(menge):
+            element = Elements.query.filter_by(inventar_ID = INV.inventarID, produktID = pID).first()
+            db.session.delete(element)
+            db.session.commit()
 
 
        return render_template("verkaeufer.html")

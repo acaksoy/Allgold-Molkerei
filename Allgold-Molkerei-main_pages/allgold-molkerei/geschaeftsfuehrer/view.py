@@ -17,6 +17,7 @@ def home():
 
         return render_template('geschaeftsfuehrer.html', alleVerkaufstelle = alleVerkaufstelle)
 
+
 @Geschaeftsfuehrer.route('/preisliste/<string:typ>', methods=['GET','POST'])
 def liste(typ):
     if typ == "preisliste":
