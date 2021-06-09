@@ -66,7 +66,6 @@ class Elements(db.Model):
         self.inventar_ID = inventar_ID
         self.produktID = produktID
 
-
 class Produkt(db.Model):
     produktID = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
@@ -85,15 +84,13 @@ class Lieferung(db.Model):
     lieferID = db.Column(db.Integer, primary_key=True)
     lieferDatum = db.Column(db.Date)
     lieferMenge = db.Column(db.Integer)
-    verkstelleName = db.Column(db.String(50))
 
     produktID = db.Column(db.Integer, db.ForeignKey('produkt.produktID'), nullable=False)
     verkaufstelleID = db.Column(db.Integer, db.ForeignKey('verkaufstelle.verkaufstelleID'), nullable=False)
 
-    def __init__(self, lieferDatum, lieferMenge, verkstelleName, produktID, verkaufstelleID):
+    def __init__(self, lieferDatum, lieferMenge, produktID, verkaufstelleID):
         self.lieferDatum = lieferDatum
         self.lieferMenge = lieferMenge
-        self.verkstelleName = verkstelleName
         self.produktID = produktID
         self.verkaufstelleID = verkaufstelleID
 

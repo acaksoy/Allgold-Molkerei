@@ -17,7 +17,7 @@
 		<h2>Lieferungsverwaltung</h2>
 		<br>
 		
-		<a href="../../geschaeftsfuehrer/pages/geschaeftsfuehrer.html"> <!-- uygun linkler koyulmali -->
+		<a href="{{url_for('lieferant.createPDF',verkaufstelleID = '0')}}"> <!-- uygun linkler koyulmali -->
 			<button name="verkauferfassen" type="submit" class="basic-button" style="width: 500px">
 				<b>Produktlieferliste</b>  <!-- text tarzi olusturulmali -->
 			</button>
@@ -25,7 +25,7 @@
 		<br>
 		<a href="{{url_for('lieferant.erfassung')}}"> <!-- uygun linkler koyulmali -->
 			<button name="APerfassen" class="basic-button" style="width: 500px">
-				<b>Gelieferte Produkte erfassen</b>  <!-- text tarzi olusturulmali -->
+				<b>Lieferung erfassen</b>  <!-- text tarzi olusturulmali -->
 			</button>
 		</a> 
 	</div>

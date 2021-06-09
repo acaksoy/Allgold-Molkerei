@@ -13,15 +13,12 @@
 		<a href="{{url_for('index.home')}}">
 			<img src="{{url_for('.static', filename='resources/index_top_banner.jpg')}}" class="top-banner" width= "316" height="124" >
 		</a> <br> <br>
-		<h1> Lieferungerfassen </h1>
+		<h1> Lieferung erfassen </h1>
 		<form action = {{request.path}} method="post">
 	   
 	   	 	<label for="vkID">Verkaufsstellen ID: <br>
 	   	 	<input type="text" id="vkID" name="vkID"></label><br>
 	     	<br>
-			
-		     <label for="name">Name:</label><br>
-		     <input type="text" id="name" name="name"><br><br>
 		     
 	     	<label for="prID">Produkt ID:</label><br>
 		     <input type="text" id="prID" name="prID"><br><br>

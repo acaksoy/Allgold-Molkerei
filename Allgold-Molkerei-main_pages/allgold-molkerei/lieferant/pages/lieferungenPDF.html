@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Lieferungen</title>
+	<link href= "{{url_for('.static', filename='css/main.css')}}"  type="text/css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="div-center">
+        <img src="{{url_for('.static', filename='resources/index_top_banner.jpg')}}" class="top-banner" width= "632" height="248" >
+        <h1> Lieferliste: </h1>
+        <table style="width:100%">
+            <tr>
+                <th>LieferID</th>
+                <th>Liefertermin</th>
+                <th>Liefermenge</th>
+                <th>VerkaufstelleID</th>
+                <th>ProduktID</th>
+                <th>Name der Verkaufstelle</th>
+
+            </tr>
+            {% for lieferung in jedesElement %}
+            <tr>
+                <th>{{lieferung.lieferID}}</th>
+                <th>{{lieferung.lieferDatum}}</th>
+                <th>{{lieferung.lieferMenge}}</th>
+                <th>{{lieferung.verkaufstelleID}}</th>
+                <th>{{lieferung.produktID}}</th>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+
+
+</body>
+</html>

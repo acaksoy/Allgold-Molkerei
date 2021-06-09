@@ -25,7 +25,7 @@ def erfassen():
        INV = Inventar.query.get(invID)
 
        #for x in range(menge):
-       element = Elements.query.filter_by(inventar_ID = INV, produktID = pID).first()
+       element = Elements.query.filter_by(inventar_ID=INV.inventarID, produktID=pID).first()
        db.session.delete(element)
        db.session.commit()
 
