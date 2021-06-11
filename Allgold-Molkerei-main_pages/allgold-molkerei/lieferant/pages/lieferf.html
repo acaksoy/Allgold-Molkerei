@@ -7,15 +7,23 @@
 	<title>Allgold Supply Center</title>
 	<link href= "{{url_for('.static', filename='css/main.css')}}" rel="stylesheet"  type="text/css" />
   </head>
-<body>
-	
 	<div class="div-center">
 		<a href="{{url_for('index.home')}}">
 			<img src="{{url_for('.static', filename='resources/index_top_banner.jpg')}}" class="top-banner" width= "316" height="124" >
 		</a> <br> <br>
 		<h1> Lieferung erfassen </h1>
 		<form action = {{request.path}} method="post">
-	   
+			<body>
+				{% with messages = get_flashed_messages() %}
+				   {% if messages %}
+					{% for message in messages %}
+						<div class="myflash">
+							 <strong>{{ message }}</strong>
+						 </div>
+					{% endfor %}
+				  {% endif %}
+				 {% endwith %}
+				<br>
 	   	 	<label for="vkID">Verkaufsstellen ID: <br>
 	   	 	<input type="text" id="vkID" name="vkID"></label><br>
 	     	<br>

@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, make_response
-from database import Lieferung,db, Verkaufstelle
+from database import Lieferung,db, Verkaufstelle, Verkauf, Produkt
 from datetime import datetime
 import pdfkit
 
@@ -14,11 +14,16 @@ def home():
 @Lieferant.route('/erfassen', methods=['GET','POST'])
 def erfassung():
     if request.method == "POST":
-       date = datetime.strptime(request.form['lfDat'], '%Y-%m-%d').date()
-       lieferfass = Lieferung(date, request.form['mg'], request.form['prID'], request.form['vkID'])
-       db.session.add(lieferfass)
-       db.session.commit()
-       return redirect(url_for("lieferant.home"))
+        if Verkauf.query.filter_by(verkaufstelleID = request.form['vkID']).all() and Produkt.query.filter_by(produktID = request.form['prID']).all():
+            date = datetime.strptime(request.form['lfDat'], '%Y-%m-%d').date()
+            lieferfass = Lieferung(date, request.form['mg'], request.form['prID'], request.form['vkID'])
+            db.session.add(lieferfass)
+            db.session.commit()
+            return redirect(url_for("lieferant.home"))
+        elif not Produkt.query.filter_by(produktID = request.form['prID']).all():
+            flash('Produkt existiert nicht!', 'error')
+        elif not Verkauf.query.filter_by(verkaufstelleID = request.form['vkID']).all():
+            flash('Verkaufstelle existiert nicht!', 'error')
     return render_template('lieferf.html')
 
 @Lieferant.route('/createdPDF', methods=['GET','POST'])
