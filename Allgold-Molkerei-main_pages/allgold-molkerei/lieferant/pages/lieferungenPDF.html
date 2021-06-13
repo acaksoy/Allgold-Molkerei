@@ -21,13 +21,18 @@
                 <th>Name der Verkaufstelle</th>
 
             </tr>
-            {% for lieferung in jedesElement %}
+            {% for lieferung in lief %}
             <tr>
                 <th>{{lieferung.lieferID}}</th>
                 <th>{{lieferung.lieferDatum}}</th>
                 <th>{{lieferung.lieferMenge}}</th>
                 <th>{{lieferung.verkaufstelleID}}</th>
                 <th>{{lieferung.produktID}}</th>
+                {% for verkauf in verk %}
+                    {% if lieferung.verkaufstelleID == verkauf.verkaufstelleID %}
+                        <th>{{verkauf.name}}</th>
+                    {% endif %}
+                {% endfor %}
             </tr>
             {% endfor %}
         </table>

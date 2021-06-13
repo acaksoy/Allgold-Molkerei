@@ -8,29 +8,36 @@ Lieferant = Blueprint('lieferant', __name__, template_folder='pages', static_fol
 # all routes
 @Lieferant.route('/lieferant')
 def home():
-    alleVerkaufstelle = Verkaufstelle.query.all()
     return render_template('lieferant.html')
 
 @Lieferant.route('/erfassen', methods=['GET','POST'])
 def erfassung():
     if request.method == "POST":
-        if Verkauf.query.filter_by(verkaufstelleID = request.form['vkID']).all() and Produkt.query.filter_by(produktID = request.form['prID']).all():
+        #if Verkauf.query.filter_by(verkaufstelleID = int(request.form['vkID'])).all() and Produkt.query.filter_by(produktID = int(request.form['prID'])).all():
+        vkIDexist = db.session.query(Verkaufstelle.verkaufstelleID).filter_by(verkaufstelleID = int(request.form['vkID'])).first()
+        prIDexist = db.session.query(Produkt.produktID).filter_by(produktID = int(request.form['prID'])).first()
+        if vkIDexist and prIDexist is not None:
             date = datetime.strptime(request.form['lfDat'], '%Y-%m-%d').date()
             lieferfass = Lieferung(date, request.form['mg'], request.form['prID'], request.form['vkID'])
             db.session.add(lieferfass)
             db.session.commit()
             return redirect(url_for("lieferant.home"))
-        elif not Produkt.query.filter_by(produktID = request.form['prID']).all():
+        elif not prIDexist and not vkIDexist:
+            flash('Produkt und Verkaufstelle existieren nicht!', 'error')
+            return render_template('lieferf.html')
+        elif not prIDexist:
             flash('Produkt existiert nicht!', 'error')
-        elif not Verkauf.query.filter_by(verkaufstelleID = request.form['vkID']).all():
+            return render_template('lieferf.html')
+        elif not vkIDexist:
             flash('Verkaufstelle existiert nicht!', 'error')
+            return render_template('lieferf.html')
     return render_template('lieferf.html')
 
 @Lieferant.route('/createdPDF', methods=['GET','POST'])
 def createPDF():
-    jedesElement = Lieferung.query.all()
-    #vkstellen = Verkaufstelle.query.all()
-    rendered = render_template("lieferungenPDF.html", jedesElement=jedesElement)
+    lief = Lieferung.query.all()
+    verk = Verkaufstelle.query.all()
+    rendered = render_template("lieferungenPDF.html", lief=lief, verk=verk)
 
     config = pdfkit.configuration(wkhtmltopdf=r"C:\Programme\wkhtmltopdf\bin\wkhtmltopdf.exe")
     options = {"enable-local-file-access": None}

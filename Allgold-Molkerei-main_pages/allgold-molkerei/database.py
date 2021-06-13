@@ -30,6 +30,8 @@ class Verkaufstelle(db.Model):
     inventar_ID = db.Column(db.Integer, db.ForeignKey('inventar.inventarID'), nullable=False)
     _inventar = db.relationship("Inventar", back_populates="_verkaufstelle")
 
+    _lieferung = db.relationship("Lieferung")
+
     def __init__(self, name, typ, adresse_ID, inventar_ID):
         self.name = name
         self.typ = typ
