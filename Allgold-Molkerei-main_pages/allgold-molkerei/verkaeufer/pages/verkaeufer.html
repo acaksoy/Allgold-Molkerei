@@ -14,6 +14,15 @@
 			<img src="{{url_for('.static', filename='resources/index_top_banner.jpg')}}" class="top-banner" width= "316" height="124" >
 		</a>
 		<h2>Verkaufsverwaltung</h2>
+				 {% with messages = get_flashed_messages() %}
+				   {% if messages %}
+					{% for message in messages %}
+						<div class="mygoodflash">
+							 <strong>{{ message }}</strong>
+						 </div>
+					{% endfor %}
+				   {% endif %}
+				 {% endwith %}
 		<br>
 		<div class="burger-menu">
             <button class="card-button" href="javascript:void(0);" onclick="toggleBurgerMenu()">die Preisliste</button>

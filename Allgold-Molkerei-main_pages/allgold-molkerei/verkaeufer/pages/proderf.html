@@ -14,7 +14,15 @@
 		</a>
 		<h1> Produkterfassen </h1>
 			<form action = {{request.path}} method="POST">
-		   
+		   		 {% with messages = get_flashed_messages() %}
+				   {% if messages %}
+					{% for message in messages %}
+						<div class="myflash">
+							 <strong>{{ message }}</strong>
+						 </div>
+					{% endfor %}
+				   {% endif %}
+				 {% endwith %}
 		   	 	<label for="inID">Inventar ID:</label><br>
 		   	 	<input type="text" id="inID" name="inID"><br><br>
 	

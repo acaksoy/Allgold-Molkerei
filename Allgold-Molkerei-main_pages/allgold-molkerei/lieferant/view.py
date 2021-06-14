@@ -13,7 +13,6 @@ def home():
 @Lieferant.route('/erfassen', methods=['GET','POST'])
 def erfassung():
     if request.method == "POST":
-        #if Verkauf.query.filter_by(verkaufstelleID = int(request.form['vkID'])).all() and Produkt.query.filter_by(produktID = int(request.form['prID'])).all():
         vkIDexist = db.session.query(Verkaufstelle.verkaufstelleID).filter_by(verkaufstelleID = int(request.form['vkID'])).first()
         prIDexist = db.session.query(Produkt.produktID).filter_by(produktID = int(request.form['prID'])).first()
         if vkIDexist and prIDexist is not None:

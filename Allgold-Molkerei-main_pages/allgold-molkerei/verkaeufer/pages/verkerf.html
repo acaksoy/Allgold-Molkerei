@@ -14,7 +14,15 @@
 		</a>
         <h1> Verkauferfassen </h1>
         <form action = {{request.path}} method="POST">
-
+				{% with messages = get_flashed_messages() %}
+				   {% if messages %}
+					{% for message in messages %}
+						<div class="myflash">
+							 <strong>{{ message }}</strong>
+						 </div>
+					{% endfor %}
+				   {% endif %}
+				 {% endwith %}
              <label for="vkID">Verkaufsstellen ID:</label><br>
              <input type="text" id="vkID" name="vkID"><br><br>
 
