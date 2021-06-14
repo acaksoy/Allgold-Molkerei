@@ -17,12 +17,10 @@
 		</a> <br> <br>
 
 		<div class="burger-menu">
-			<button class="card-button" href="javascript:void(0);" onclick="toggleBurgerMenu()">Dokumente</button>
+			<button class="card-button" href="javascript:void(0);" onclick="toggleBurgerMenu()">Preisliste</button>
 			<div id="burger-menu">
 				<a href="{{url_for('geschaeftsfuehrer.liste', typ = 'preisliste')}}"> preisliste html</a>
 				<a href="{{url_for('geschaeftsfuehrer.createPDF',typ = 'preisliste', verkaufstelleID = '0')}}"> preisliste pdf </a>
-				<a href="{{url_for('geschaeftsfuehrer.liste', typ = 'lieferungen')}}"> lieferungen html</a>
-				<a href="{{url_for('geschaeftsfuehrer.createPDF',typ = 'lieferungen', verkaufstelleID = '0')}}"> lieferungen pdf </a>
 			</div>
 		</div>
 		<a href="{{url_for('geschaeftsfuehrer.neuProd')}}"> <button class="basic-button"> Produkt in das Sortiment aufnehmen </button></a>
