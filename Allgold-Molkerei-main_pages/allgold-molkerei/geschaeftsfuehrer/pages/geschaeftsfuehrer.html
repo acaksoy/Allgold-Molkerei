@@ -31,7 +31,7 @@
 					<b>Name: </b><b id="name">{{verkaufstelle.name}}</b> <br>
 					<b>ID: {{verkaufstelle.verkaufstelleID}}</b> <br>
 					<a href="{{url_for('geschaeftsfuehrer.uebersicht', verkaufstelleID = verkaufstelle.verkaufstelleID)}}"> <button class="card-button"> Uebersicht </button> </a>
-					<a> <button class="card-button"> Verkaufszahlen </button> </a>
+					<a href="{{url_for('geschaeftsfuehrer.createPDF',typ = 'verkauf', verkaufstelleID = verkaufstelle.verkaufstelleID)}}"> <button class="card-button"> Verkaufszahlen </button> </a>
 					<a href="{{url_for('geschaeftsfuehrer.createPDF',typ = 'inventar', verkaufstelleID = verkaufstelle.verkaufstelleID)}}"> <button class="card-button"> Inventarbestand </button> </a>
 				</div>
 			{% endfor %}

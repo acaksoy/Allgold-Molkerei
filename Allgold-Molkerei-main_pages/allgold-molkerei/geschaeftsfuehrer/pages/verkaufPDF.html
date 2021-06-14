@@ -12,20 +12,26 @@
 
         <img src="C:\Users\arifc\Desktop\SS21\ITT\projRepo\Allgold-Molkerei-main_pages\allgold-molkerei\geschaeftsfuehrer\static\resources\index_top_banner.jpg" class="top-banner" width= "632" height="248" >
 
-        <h1> Preisliste </h1>
+        <h1> {{ verkstl.name }} Verkaufzahlen </h1>
         <table style="width:100%">
             <tr>
-                <th>ProduktID</th>
-                <th>Name</th>
-                <th>Preis</th>
-                <th>Verfallsdatum</th>
+                <th>VerkaufID</th>
+                <th>Datum </th>
+                <th>Menge</th>
+                <th>ProduktName</th>
+                <th>produktID</th>
+                <th>verkaufstelleID</th>
+                <th>Verkaufstelle Name</th>
             </tr>
-            {% for element in jedesElement %}
+            {% for verkauf in verkaufen %}
             <tr>
-                <td>{{element.produktID}}</td>
-                <td>{{element.name}}</td>
-                <td>{{element.preis}}</td>
-                <td>{{element.verfallsDatum}}</td>
+                <td>{{verkauf.verkaufID}}</td>
+                <td>{{verkauf.verkaufDatum}}</td>
+                <td>{{verkauf.verkaufMenge}}</td>
+                <td>{{verkauf.verkaufProduktName}}</td>
+                <td>{{verkauf.produktID}}</td>
+                <td>{{verkstl.verkaufstelleID}}</td>
+                <td>{{verkstl.name}}</td>
             </tr>
             {% endfor %}
         </table>

@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from flask import Blueprint, render_template, request, redirect, url_for, make_response,flash
-from database import Verkaufstelle, Adresse, Inventar, Produkt, Lieferung, Elements
+from database import Verkaufstelle, Adresse, Inventar, Produkt, Lieferung, Elements, Verkauf
 from database import db
 import pdfkit
 
@@ -130,6 +130,12 @@ def createPDF(typ, verkaufstelleID):
         inventar = Inventar.query.get(verkstl.inventar_ID)
         jedesElement = Elements.query.filter_by(inventar_ID= inventar.inventarID).all()
         rendered = render_template("inventarPDF.html", jedesElement=jedesElement, verkstl= verkstl, inventar= inventar)
+    if typ == "verkauf":
+        verkstl = Verkaufstelle.query.get(verkaufstelleID)
+        verkaufen = Verkauf.query.filter_by(verkaufstelleID=verkaufstelleID).all()
+        rendered = render_template("verkaufPDF.html", verkaufen=verkaufen, verkstl=verkstl)
+
+
 
     config = pdfkit.configuration(wkhtmltopdf=r"C:\Programme\wkhtmltopdf\bin\wkhtmltopdf.exe")
     options = {"enable-local-file-access": None}
