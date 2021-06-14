@@ -15,6 +15,9 @@ def erfassung():
     if request.method == "POST":
         vkIDexist = db.session.query(Verkaufstelle.verkaufstelleID).filter_by(verkaufstelleID = int(request.form['vkID'])).first()
         prIDexist = db.session.query(Produkt.produktID).filter_by(produktID = int(request.form['prID'])).first()
+        if request.form['lfDat'] == "":
+            flash('Gültigen Datum eingeben!', 'error')
+            return render_template('lieferf.html')
         if vkIDexist and prIDexist is not None:
             date = datetime.strptime(request.form['lfDat'], '%Y-%m-%d').date()
             lieferfass = Lieferung(date, request.form['mg'], request.form['prID'], request.form['vkID'])
