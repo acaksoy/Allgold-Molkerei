@@ -9,9 +9,9 @@
 	<script src= "{{url_for('.static', filename='js/main.js')}}"  type="text/javascript"> </script>
 </head>
 <body>
-		
+
 	<div class="div-center">
-		
+
 		<a href="{{url_for('index.home')}}">
 			<img src="{{url_for('.static', filename='resources/index_top_banner.jpg')}}" class="top-banner" width= "316" height="124" >
 		</a> <br> <br>
@@ -28,7 +28,6 @@
 		<a href="{{url_for('geschaeftsfuehrer.neuProd')}}"> <button class="basic-button"> Produkt in das Sortiment aufnehmen </button></a>
 		<div id="liste" class="outter-box">
 			<h2>Verkaufsstellen</h2>  <!--  Cards created here -->
-			{% for verkaufstelle in alleVerkaufstelle %}
 				<div class = "card">
 					<b>Name: </b><b id="name">{{verkaufstelle.name}}</b> <br>
 					<b>ID: {{verkaufstelle.verkaufstelleID}}</b> <br>
@@ -36,19 +35,18 @@
 					<a> <button class="card-button"> Verkaufszahlen </button> </a>
 					<a href="{{url_for('geschaeftsfuehrer.createPDF',typ = 'inventar', verkaufstelleID = verkaufstelle.verkaufstelleID)}}"> <button class="card-button"> Inventarbestand </button> </a>
 				</div>
-			{% endfor %}
 		</div>
-        <form action="{{request.path}}", method="POST">
-            <button type="submit" class="basic-button">
-                <b>Verkaufsstelle suchen</b>  <!-- text tarzi olusturulmali -->
-            </button>
-            <input name='search' id="search" type="text" style="height: 25px; width: 500px">
-        </form>
+		<a href="{{url_for('geschaeftsfuehrer.home')}}">
+			<button class="basic-button">
+				<b>Alle Verkaufstellen</b>  <!-- text tarzi olusturulmali -->
+			</button>
+		</a>
 		<a href="{{url_for('geschaeftsfuehrer.neuVerkaufStelle')}}">
 			<button class="basic-button">
 				<b>neue Verkaufsstelle</b>  <!-- text tarzi olusturulmali -->
 			</button>
 		</a>
 	</div>
+
 </body>
 </html>

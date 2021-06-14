@@ -12,10 +12,16 @@ Geschaeftsfuehrer = Blueprint('geschaeftsfuehrer', __name__, template_folder='pa
 # all routes
 @Geschaeftsfuehrer.route('/', methods=['GET','POST'])
 def home():
+    if request.method == "POST":
+        if Verkaufstelle.query.filter_by(name=request.form['search']).first() is  not None:
+            verkaufstelle = Verkaufstelle.query.filter_by(name=request.form['search']).first()
+            return render_template('search.html', verkaufstelle=verkaufstelle)
+        else:
+            alleVerkaufstelle = Verkaufstelle.query.all()
+            return render_template('geschaeftsfuehrer.html', alleVerkaufstelle=alleVerkaufstelle)
     if request.method == "GET":
         alleVerkaufstelle = Verkaufstelle.query.all()
-
-        return render_template('geschaeftsfuehrer.html', alleVerkaufstelle = alleVerkaufstelle)
+        return render_template('geschaeftsfuehrer.html', alleVerkaufstelle=alleVerkaufstelle)
 
 
 @Geschaeftsfuehrer.route('/preisliste/<string:typ>', methods=['GET','POST'])
@@ -26,9 +32,6 @@ def liste(typ):
     if typ == "lieferungen":
         alleLieferungen = Lieferung.query.all()
         return render_template('lieferungen.html', alleLieferungen=alleLieferungen)
-
-
-
 
 
 @Geschaeftsfuehrer.route('prodHinz', methods = ['GET', 'POST'])
