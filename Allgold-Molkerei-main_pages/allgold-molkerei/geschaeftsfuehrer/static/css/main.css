@@ -140,6 +140,11 @@ button{
     padding: 10px;
     background-color: #a9a9a9;
 }
+.myflash {
+    text-align: center;
+    color: red;
+    font-size: x-large;
+ }
 
 
 

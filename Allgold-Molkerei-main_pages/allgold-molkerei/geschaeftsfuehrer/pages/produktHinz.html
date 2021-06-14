@@ -13,6 +13,15 @@
 			<img src="{{url_for('.static', filename='resources/index_top_banner.jpg')}}" class="top-banner" width= "316" height="124" >
 		</a>
         <h1> Produkt in das Sortiment aufnehmen </h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <div class="myflash">
+                     <strong>{{ message }}</strong>
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         <form action = {{request.path}} method="POST">
 
              <label for="name">Produkt Name:</label><br>

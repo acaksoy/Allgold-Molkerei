@@ -37,7 +37,9 @@ def liste(typ):
 @Geschaeftsfuehrer.route('prodHinz', methods = ['GET', 'POST'])
 def neuProd():
     if request.method == "POST":
-
+        if request.form['vrDat'] == "":
+            flash('Gültigen Datum eingeben!', 'error')
+            return render_template('lieferf.html')
         date1 = datetime.strptime(request.form['vrDat'], '%Y-%m-%d').date()
         prod = Produkt(request.form['name'], request.form['preis'], date1)
         db.session.add(prod)
@@ -123,9 +125,6 @@ def createPDF(typ, verkaufstelleID):
     if typ == "preisliste":
         jedesElement= Produkt.query.all()
         rendered = render_template("preislistePDF.html", jedesElement=jedesElement)
-    if typ == "lieferungen":
-        jedesElement = Lieferung.query.all()
-        rendered = render_template("lieferungenPDF.html", jedesElement=jedesElement)
     if typ == "inventar":
         verkstl = Verkaufstelle.query.get(verkaufstelleID)
         inventar = Inventar.query.get(verkstl.inventar_ID)

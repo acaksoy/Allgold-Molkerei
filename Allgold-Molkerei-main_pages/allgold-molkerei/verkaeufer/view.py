@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template,request, flash, redirect, url_for
+import pdfkit
+from flask import Blueprint, render_template,request, flash, redirect, url_for, make_response
 from database import Elements, Verkauf,Produkt, db, Verkaufstelle,Inventar
 from datetime import datetime
 Verkaeufer = Blueprint('verkaeufer', __name__, template_folder='pages', static_folder='static', static_url_path='/verkaeufer/static')
@@ -74,4 +75,21 @@ def proderfassen():
        return redirect(url_for(".home", proderfassen=proderfassen))
     return render_template('proderf.html')
 
+@Verkaeufer.route('/createdPDF/<string:typ>/<int:verkaufstelleID>', methods=['GET','POST'])
+def createPDF(typ, verkaufstelleID):
+    rendered = None
+    if typ == "preisliste":
+        jedesElement= Produkt.query.all()
+        rendered = render_template("preislistePDF.html", jedesElement=jedesElement)
+
+
+    config = pdfkit.configuration(wkhtmltopdf=r"C:\Programme\wkhtmltopdf\bin\wkhtmltopdf.exe")
+    options = {"enable-local-file-access": None}
+
+
+    pdf = pdfkit.from_string(rendered, False, configuration=config, options=options)
+    response = make_response(pdf)
+    response.headers["Content-Type"] = "application/pdf"
+    response.headers["Content-Disposition"] = "inline;filename = output.pdf"
+    return response
 
