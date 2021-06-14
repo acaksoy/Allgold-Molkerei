@@ -53,6 +53,9 @@ def proderfassen():
     if request.method == "POST":
        invIDexist = db.session.query(Inventar.inventarID).filter_by(inventarID=int(request.form['inID'])).first()
        prIDexist = db.session.query(Produkt.produktID).filter_by(produktID=int(request.form['prID'])).first()
+       if request.form['anDat'] == "":
+           flash('Gültigen Datum eingeben!', 'error')
+           return render_template('proderf.html')
        if invIDexist and prIDexist is not None:
            date = datetime.strptime(request.form['anDat'], '%Y-%m-%d').date()
            menge = int(request.form['mg'])
@@ -75,17 +78,15 @@ def proderfassen():
        return redirect(url_for(".home", proderfassen=proderfassen))
     return render_template('proderf.html')
 
-@Verkaeufer.route('/createdPDF/<string:typ>/<int:verkaufstelleID>', methods=['GET','POST'])
-def createPDF(typ, verkaufstelleID):
+@Verkaeufer.route('/createPDF', methods=['GET','POST'])
+def createPDF():
     rendered = None
-    if typ == "preisliste":
-        jedesElement= Produkt.query.all()
-        rendered = render_template("preislistePDF.html", jedesElement=jedesElement)
 
+    jedesElement = Produkt.query.all()
+    rendered = render_template("preislistePDF.html", jedesElement=jedesElement)
 
     config = pdfkit.configuration(wkhtmltopdf=r"C:\Programme\wkhtmltopdf\bin\wkhtmltopdf.exe")
     options = {"enable-local-file-access": None}
-
 
     pdf = pdfkit.from_string(rendered, False, configuration=config, options=options)
     response = make_response(pdf)
@@ -93,3 +94,7 @@ def createPDF(typ, verkaufstelleID):
     response.headers["Content-Disposition"] = "inline;filename = output.pdf"
     return response
 
+@Verkaeufer.route('/preisliste', methods=['GET','POST'])
+def liste():
+    alleProdukte = Produkt.query.all()
+    return render_template('preisliste.html', alleProdukte=alleProdukte)
