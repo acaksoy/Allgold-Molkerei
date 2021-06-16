@@ -40,7 +40,7 @@ def neuProd():
     if request.method == "POST":
         if request.form['vrDat'] == "":
             flash('Gültigen Datum eingeben!', 'error')
-            return render_template('lieferf.html')
+            return render_template('produktHinz.html')
         date1 = datetime.strptime(request.form['vrDat'], '%Y-%m-%d').date()
         prod = Produkt(request.form['name'], request.form['preis'], date1)
         db.session.add(prod)
