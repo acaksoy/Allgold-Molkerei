@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, make_response
-from database import Lieferung,db, Verkaufstelle, Verkauf, Produkt
+from database import Lieferung, db, Verkaufstelle, Verkauf, Produkt, Adresse
 from datetime import datetime
 import pdfkit
 
@@ -39,7 +39,8 @@ def erfassung():
 def createPDF():
     lief = Lieferung.query.all()
     verk = Verkaufstelle.query.all()
-    rendered = render_template("lieferungenPDF.html", lief=lief, verk=verk)
+    adresse = Adresse.query.all()
+    rendered = render_template("lieferungenPDF.html", lief=lief, verk=verk, adresse=adresse)
 
     config = pdfkit.configuration(wkhtmltopdf=r"C:\Programme\wkhtmltopdf\bin\wkhtmltopdf.exe")
     options = {"enable-local-file-access": None}

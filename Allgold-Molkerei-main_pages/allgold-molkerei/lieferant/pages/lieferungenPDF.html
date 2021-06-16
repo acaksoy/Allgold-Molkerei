@@ -5,19 +5,19 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Lieferungen</title>
-	<link href= "{{url_for('.static', filename='css/main.css')}}"  type="text/css" rel="stylesheet"/>
+	<link href= "C:\Users\arifc\Desktop\SS21\ITT\projRepo\Allgold-Molkerei-main_pages\allgold-molkerei\geschaeftsfuehrer\static\css\pdf.css"  type="text/css" rel="stylesheet"/>
 </head>
 <body>
     <div class="div-center">
-        <img src="{{url_for('.static', filename='resources/index_top_banner.jpg')}}" class="top-banner" width= "632" height="248" >
+         <img src="C:\Users\arifc\Desktop\SS21\ITT\projRepo\Allgold-Molkerei-main_pages\allgold-molkerei\geschaeftsfuehrer\static\resources\index_top_banner.jpg" class="top-banner" width= "632" height="248" >
         <h1> Lieferliste: </h1>
         <table style="width:100%">
             <tr>
                 <th>LieferID</th>
                 <th>Liefertermin</th>
                 <th>Liefermenge</th>
-                <th>VerkaufstelleID</th>
                 <th>ProduktID</th>
+                <th>Adresse</th>
                 <th>Name der Verkaufstelle</th>
 
             </tr>
@@ -26,8 +26,12 @@
                 <th>{{lieferung.lieferID}}</th>
                 <th>{{lieferung.lieferDatum}}</th>
                 <th>{{lieferung.lieferMenge}}</th>
-                <th>{{lieferung.verkaufstelleID}}</th>
                 <th>{{lieferung.produktID}}</th>
+                {% for adress in adresse %}
+                    {% if lieferung.verkaufstelleID == adress._verkaufstelle.verkaufstelleID %}
+                        <th>{{adress.strasse}} {{adress.hausNR}}, {{adress.plz}} {{adress.ort}}</th>
+                    {% endif %}
+                {% endfor %}
                 {% for verkauf in verk %}
                     {% if lieferung.verkaufstelleID == verkauf.verkaufstelleID %}
                         <th>{{verkauf.name}}</th>

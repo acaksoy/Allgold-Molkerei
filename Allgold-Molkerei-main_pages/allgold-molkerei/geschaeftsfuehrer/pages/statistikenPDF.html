@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Preisliste</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"> </script>
+</head>
+<body>
+    <div class="div-center">
+        <h1>Allgemeine Produktverkaufsstatistiken</h1>
+        <div class="wrapper">
+            <canvas id="total" width="400" height="225"></canvas>
+        </div>
+        <script>
+             var ctx = document.getElementById('total').getContext('2d');
+               var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [ {% for item in labels %}
+                                '{{item}}',
+                                {% endfor %} ],
+                    datasets: [{
+                        label: "Anzahl den Verkaufen",
+                        data: [ {% for item in allgemeinProduktVerkauf %}
+                                {{allgemeinProduktVerkauf[item]}},
+                                {% endfor %}],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                        ],
+                        backgroundColor: [
+                            {% for item in labels %}
+                                'black',
+                                {% endfor %}
+                        ],
+                        borderWidth: 0.5
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false
+                }
+            });
+         </script>
+        {% for verkaufstelle in alleVerkaufstelle %}
+        <h1>{{verkaufstelle.name}}</h1>
+        <div class="wrapper">
+            <canvas id="{{verkaufstelle.verkaufstelleID}}" width="400" height="225"></canvas>
+        </div>
+        <script>
+             var ctx = document.getElementById('{{verkaufstelle.verkaufstelleID}}').getContext('2d');
+               var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [ {% for item in labels %}
+                                '{{item}}',
+                                {% endfor %} ],
+                    datasets: [{
+                        label: "Anzahl den Verkaufen",
+                        data: [ {% for item in datas[verkaufstelle] %}
+                                {{item}},
+                                {% endfor %}],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                        ],
+                        backgroundColor: [
+                            {% for item in labels %}
+                                'black',
+                                {% endfor %}
+                        ],
+                        borderWidth: 0.5
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false
+                }
+            });
+         </script>
+        {% endfor %}
+    </div>
+
+
+</body>
+</html>

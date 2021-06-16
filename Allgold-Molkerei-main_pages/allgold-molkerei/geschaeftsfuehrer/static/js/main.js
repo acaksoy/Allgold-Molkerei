@@ -1,41 +1,4 @@
-/**
- * 
- */
 
-function createVerkaufsstelle(){
-	
-	var liste = document.getElementById("liste");
-	
-	var card = document.createElement("div");
-	card.setAttribute("class", "card");
-	
-	var name = document.createElement("b");
-	name.textContent = "Name:";
-	card.appendChild(name);
-	
-	var br = document.createElement("br");
-	card.appendChild(br);
-	
-	var id = document.createElement("b");
-	id.textContent = "ID:";
-	card.appendChild(id);
-	
-	var br2 = document.createElement("br");
-	card.appendChild(br2);
-	
-	var button = document.createElement("button");
-	button.setAttribute("class", "card-button");
-	button.textContent = "Uebersicht";
-	card.appendChild(button);
-	
-	var button2 = document.createElement("button");
-	button2.setAttribute("class", "card-button");
-	button2.textContent = "Verkaufszahlen";
-	card.appendChild(button2);
-	
-	
-	liste.appendChild(card);
-}
 
 function toggleBurgerMenu(){
 	var links = document.getElementById("burger-menu");
@@ -63,4 +26,8 @@ function search(){
             card[i].style.display = "none";
         }
     }
+}
+
+function createChart(canvasID){
+
 }
