@@ -45,7 +45,7 @@ def neuProd():
         prod = Produkt(request.form['name'], request.form['preis'], date1)
         db.session.add(prod)
         db.session.commit()
-        flash("Produkt gespeichert", "success")
+        flash("Produkt gespeichert", 'success')
         return redirect(url_for(".home", prod=prod))
     return render_template('produktHinz.html')
 
